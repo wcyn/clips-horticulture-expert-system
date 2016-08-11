@@ -31,16 +31,50 @@
     else roses))))
     )
 
+; Have at least two weights to add up
+; argument c is a wildcard parameter
+(deffunction get-total-rules-weight (?a ?b $?c)
+    (bind ?response (ask-question ?question 1 2 3 4))
+    (if (eq ?response 1)
+        then cabbage 
+    else (if (eq ?response 2)
+        then banana
+    else (if (eq ?response 3)
+        then maize 
+    else (if (eq ?response 4)
+        then cabbage 
+    else roses))))
+    )
 ;;;; Query Rules ;;;;
 ;____________________;
 
-;;; 
-
-(defrule determine-plant ""
+(defrule determine-plant "Rules for when no plant name or diagnosis is available"
     (not (plant-name ?))
     (not (disease ?))
     =>
     (assert (plant-name (which-plant "Which type of plant has a problem?  (1.cabbage 2.banana 3.maize 4.roses)? "))))
+
+;;;; Query Plant Conditions ;;;;
+
+(defrule determine-yellow-patch-leaves ""
+   (plant-name rose)
+   =>
+   (assert (has-yellow-patch-leaves (yes-or-no-p "Does the plant have yellow patches on its leaves? (yes/no)? "))))
+
+(defrule determine-orange-spores-leaves ""
+   (plant-name rose)
+   =>
+   (assert (has-orange-spores-leaves (yes-or-no-p "Does the plant have Orange pustules of spores underneath the leaves? (yes/no)? "))))
+
+(defrule determine-leaves-fall ""
+   (plant-name rose)
+   =>
+   (assert (has-leaves-fall (yes-or-no-p "Do the affected leaves fall prior to healthy ones? (yes/no)? "))))
+
+(defrule determine-plants-defoliated ""
+   (plant-name rose)
+   =>
+   (assert (has-leaves-fall (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
 
 
 ; Startup n Conclusion Rules
