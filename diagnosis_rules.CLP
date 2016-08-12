@@ -27,26 +27,28 @@
     else (if (eq ?response 3)
         then maize 
     else (if (eq ?response 4)
-        then cabbage 
-    else roses))))
+        then roses 
+    else nil))))
     )
 
 ; Have at least two weights to add up
 ; argument c is a wildcard parameter
-(deffunction get-total-rules-weight (?a ?b $?c)
-    (bind ?response (ask-question ?question 1 2 3 4))
-    (if (eq ?response 1)
-        then cabbage 
-    else (if (eq ?response 2)
-        then banana
-    else (if (eq ?response 3)
-        then maize 
-    else (if (eq ?response 4)
-        then cabbage 
-    else roses))))
-    )
+; (deffunction get-total-rules-weight (?a ?b $?c)
+;     (bind ?response (ask-question ?question 1 2 3 4))
+;     (if (eq ?response 1)
+;         then cabbage 
+;     else (if (eq ?response 2)
+;         then banana
+;     else (if (eq ?response 3)
+;         then maize 
+;     else (if (eq ?response 4)
+;         then roses 
+;     else nil))))
+;     )
+
 ;;;; Query Rules ;;;;
 ;____________________;
+
 
 (defrule determine-plant "Rules for when no plant name or diagnosis is available"
     (not (plant-name ?))
@@ -74,7 +76,7 @@
 (defrule determine-plants-defoliated ""
    (plant-name rose)
    =>
-   (assert (has-leaves-fall (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
+   (assert (has-leaves-defoliated (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
 
 
 ; Startup n Conclusion Rules
