@@ -69,4 +69,26 @@
 - Green-brown frass on leaves
 - Presence of caterpillar that is green and hairy
 
-- Pleb
+## MAIZE
+### Disease 1: Giberella Ear Rot
+- Red/Pink coloured mold on ear tip
+- Husk adhering tightly to the ear
+- White mycelium (mold) gradually moving towards base of the ear _(during onset)_
+- Extensive kernel rotting
+- Bluish-black _perithecia_ on husks
+
+### Disease 2: Leaf blight
+- Elliptical necrotic gray-green lesions on leaves
+- Spore formation on leaves
+- Large areas of dead tissue
+
+### Pest 1: Termites
+- Partial/Total defoliation of maize seedlings
+- Withering
+- Plant lodging _(displacement of vertical alignment of root or stem)_
+- Death
+
+### Pest 2: Weevils
+- Circular or ragged holes on the surface of the grains
+- Grains float if placed on water
+- Flour-like grain dust mixed with frass
