@@ -48,3 +48,23 @@
 - Reduced plant growth 
 - reduced fruit production  
 - black hard-shelled beetle between leaf sheaths 
+
+
+## CABBAGES
+### Disease 1: Downy Mildew
+- Irregular yellow patches on leaves
+- Fluffy gray growth on underside of leaves
+
+### Disease 2: White rust
+- White pustules on cotyledons, leaves, stems or flowers
+- Leaves may roll and thicken
+
+### Pest 1: Slugs & Snails
+- Irregularly shaped holes in leaves and stems
+- Slime trails present on the plant and surrounding soil
+- Shredded leaves
+
+### Pest 2: Large Cabbage white(Cabbageworm)
+- Large ragged holes in leaves bored into head
+- Green-brown frass on leaves
+- Presence of caterpillar that is green and hairy
