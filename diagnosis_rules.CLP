@@ -256,7 +256,7 @@
    (defrule determine-red-pink-mold""
    (plant-name maize)
    =>
-   (assert (has-red-pink-mold (yes-or-no-p "Is there red/pink coloured mold on ear tip? (yes/no)? "))))
+   (assert (has-red-pink-mold (yes-or-no-p "Is there red or pink coloured mold on ear tip? (yes/no)? "))))
 
    (defrule determine-husk-adhering-to-ear""
    (plant-name maize)
@@ -266,7 +266,7 @@
    (defrule determine-white-mycelium""
    (plant-name maize)
    =>
-   (assert (has-white-mycelium(yes-or-no-p "Presence of white mycelium (mold) gradually moving towards base of the ear? (yes/no)? "))))
+   (assert (has-white-mycelium(yes-or-no-p "Presence of white mold gradually moving towards base of the ear? (yes/no)? "))))
 
    (defrule determine-extensive-kernel-rotting""
    (plant-name maize)
@@ -276,7 +276,7 @@
    (defrule determine-bluish-black-perithecia-on-husks""
    (plant-name maize)
    =>
-   (assert (has-bluish-black-perithecia-on-husks(yes-or-no-p "Do the husks havebluish black perithecia? (yes/no)? "))))
+   (assert (has-bluish-black-perithecia-on-husks(yes-or-no-p "Do the husks have bluish-black perithecia? (yes/no)? "))))
 
    (defrule determine-gray-green-lesions-leaves""
    (plant-name maize)
@@ -296,7 +296,7 @@
    (defrule determine-defoliation-seedlings""
    (plant-name maize)
    =>
-   (assert (has-defoliation-seedlings(yes-or-no-p "Is there partial/total defoliation of seedlings (yes/no)? "))))
+   (assert (has-defoliation-seedlings(yes-or-no-p "Is there partial or total defoliation of seedlings (yes/no)? "))))
 
    (defrule determine-withering""
    (plant-name maize)
@@ -306,7 +306,7 @@
    (defrule determine-plant-lodging""
    (plant-name maize)
    =>
-   (assert (has-plant-lodging(yes-or-no-p "Presence of plant lodging (displacement of vertical alignment of root or stem? (yes/no)? "))))
+   (assert (has-plant-lodging(yes-or-no-p "Is the alignment of the root or stem vertically displaced? (yes/no)? "))))
 
    (defrule determine-plant-death""
    (plant-name maize)
