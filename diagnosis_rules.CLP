@@ -173,6 +173,91 @@
    =>
    (assert (has-caterpillar-green-hairy (yes-or-no-p "Presence of a caterpillar that is green and hairy? (yes/no)? "))))
 
+   (defrule determine-internal-tissue-yellow-watery""
+   (plant-name banana)
+   =>
+   (assert (has-internal-tissue-yellow-watery (yes-or-no-p "Are the internal tissues on the stem yellow/brown and watery? (yes/no)? "))))
+
+   (defrule determine-break-from-rhizome""
+   (plant-name banana)
+   =>
+   (assert (has-break-from-rhizome (yes-or-no-p "Does the pseudostem break from the rhizome? (yes/no)? "))))
+
+   (defrule determine-rhizome-not-germinating""
+   (plant-name banana)
+   =>
+   (assert (has-rhizome-not-germinating (yes-or-no-p "Does the rhizome fail to germinate (does not form new leaves)? (yes/no)? "))))
+
+   (defrule determine-chlorotic mottling-foliage""
+   (plant-name banana)
+   =>
+   (assert (has-chlorotic-mottling-foliage (yes-or-no-p "Do the leaves have yellow discolouration-either spots or stripes? (yes/no)? "))))
+
+   (defrule determine-distorted-fruit""
+   (plant-name banana)
+   =>
+   (assert (has-distorted-fruit (yes-or-no-p "Are the fruits distorted with discoloured streaks? (yes/no)? "))))
+
+   (defrule determine-distorted-leaves""
+   (plant-name banana)
+   =>
+   (assert (has-distorted-leaves (yes-or-no-p "Do the leaves appear distorted? (yes/no)? "))))
+
+   (defrule determine-leaf-necrosis""
+   (plant-name banana)
+   =>
+   (assert (has-leaf-necrosis (yes-or-no-p "Do the leaves have black, brown or tan spots, holes or discolourations? (yes/no)? "))))
+
+   (defrule determine-curled-shrivelled-leaves""
+   (plant-name banana)
+   =>
+   (assert (has-curled-shrivelled-leaves (yes-or-no-p "Are the plants distorted with curled, shrivelled leaves? (yes/no)? "))))
+
+   (defrule determine-galls-on-leaves""
+   (plant-name banana)
+   =>
+   (assert (has-galls-on-leaves (yes-or-no-p "Do the leaves appear to have abnormal growths? (yes/no)? "))))
+
+   (defrule determine-aphid-colonies""
+   (plant-name banana)
+   =>
+   (assert (has-aphid-colonies (yes-or-no-p "Are there black insect like growths present in crown of plant at base of pseudostem? (yes/no)? "))))
+
+   (defrule determine-tunnels-in-corms""
+   (plant-name banana)
+   =>
+   (assert (has-tunnels-in-corms (yes-or-no-p "Are there visible tunnels in the corm? (yes/no)? "))))
+
+   (defrule determine-plants-wilting""
+   (plant-name banana)
+   =>
+   (assert (has-plants-wilting (yes-or-no-p "Are the plants wilting and toppling over (yes/no)? "))))
+
+   (defrule determine-root-destruction""
+   (plant-name banana)
+   =>
+   (assert (has-root-destruction (yes-or-no-p "Does the root system appear destroyed? "))))
+
+   (defrule determine-reduced-plant-growth""
+   (plant-name banana)
+   =>
+   (assert (has-reduced-plant-growth (yes-or-no-p "Is there observable reduced plant growth (yes/no)? "))))
+
+   (defrule determine-reduced-fruit-production""
+   (plant-name banana)
+   =>
+   (assert (has-reduced-fruit-production (yes-or-no-p "Is there observable reduced fruit production (yes/no)? "))))
+
+   (defrule determine-black-beetle""
+   (plant-name banana)
+   =>
+   (assert (has-black-beetle (yes-or-no-p "Are there black hard shelled substances between leaf sheaths (yes/no)? "))))
+
+
+
+
+
+
 
 ; Startup n Conclusion Rules
 
