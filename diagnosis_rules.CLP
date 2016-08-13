@@ -122,6 +122,86 @@
    (plant-name rose)
    =>
    (assert (has-fine-webbing-eggs-underside (yes-or-no-p "Do the plants have fine webbing and eggs on the undersides of the leaves? (yes/no)? "))))
+
+(defrule determine-yellow-brown-watery-internal-tissue ""
+   (plant-name banana)
+   =>
+   (assert (has-yellow-brown-watery-internal-tissue (yes-or-no-p "Is the internal tissue yellow/brown and watery? (yes/no)? "))))
+   
+(defrule determine-pseudostem-breaks-from-rhizome ""
+   (plant-name banana)
+   =>
+   (assert (has-pseudostem-breaks-from-rhizome (yes-or-no-p "Does the pseudostem break from the rhizome? (yes/no)? "))))
+   
+(defrule determine-rhizome-fails-to-germinate ""
+   (plant-name banana)
+   =>
+   (assert (has-rhizome-fails-to-germinate (yes-or-no-p "Does the rhizome fail to germinate? (yes/no)? "))))
+   
+(defrule determine-chlorotic-mottling-stripes-on-foliage ""
+   (plant-name banana)
+   =>
+   (assert (has-chlorotic-mottling-stripes-on-foliage (yes-or-no-p "Is there chlorotic mottling or stripes on foliage? (yes/no)? "))))
+   
+(defrule determine-distorted-fruit-with-chlorotic-streaks-mottling ""
+   (plant-name banana)
+   =>
+   (assert (has-distorted-fruit-with-chlorotic-streaks-mottling (yes-or-no-p "Does the plant have distorted fruit which may have chlorotic streaks or mottling? (yes/no)? "))))
+   
+(defrule determine-distorted-leaves ""
+   (plant-name banana)
+   =>
+   (assert (has-distorted-leaves (yes-or-no-p "Does the plant have distorted leaves? (yes/no)? "))))
+   
+(defrule determine-leaf-necrosis ""
+   (plant-name banana)
+   =>
+   (assert (has-leaf-necrosis (yes-or-no-p "Does the plant have leaf necrosis? (yes/no)? "))))
+   
+(defrule determine-deformed-plants-curled-shrivelled-leaves ""
+   (plant-name banana)
+   =>
+   (assert (has-deformed-plants-curled-shrivelled-leaves (yes-or-no-p "Are the plants deformed with curled, shrivelled leaves? (yes/no)? "))))
+   
+(defrule determine-galls-form-on-leaves ""
+   (plant-name banana)
+   =>
+   (assert (has-galls-form-on-leaves (yes-or-no-p "Do galls form on the leaves of the plant? (yes/no)? "))))
+   
+(defrule determine-colonies-of-aphids-present ""
+   (plant-name banana)
+   =>
+   (assert (has-colonies-of-aphids-present (yes-or-no-p "Are colonies of aphids present in the crown of the plant at the base of pseudostem or between the outer leaf sheaths? (yes/no)? "))))
+
+(defrule determine-visible-tunnels-in-corm ""
+   (plant-name banana)
+   =>
+   (assert (has-visible-tunnels-in-corm (yes-or-no-p "Do the plants have visible tunnels in corm as rounded holes up to 8 mm in diameter? (yes/no)? "))))
+   
+(defrule determine-plants-wilting-toppling ""
+   (plant-name banana)
+   =>
+   (assert (has-plants-wilting-toppling (yes-or-no-p "Do the plants wilt and topple over? (yes/no)? "))))
+
+(defrule determine-destruction-root-system ""
+   (plant-name banana)
+   =>
+   (assert (has-destruction-root-system (yes-or-no-p "Do the plants face destruction of the root system? (yes/no)? "))))
+   
+(defrule determine-reduced-plant-growth ""
+   (plant-name banana)
+   =>
+   (assert (has-reduced-plant-growth (yes-or-no-p "Do the plants have reduced growth? (yes/no)? "))))
+   
+(defrule determine-reduced-fruit-production ""
+   (plant-name banana)
+   =>
+   (assert (has-reduced-fruit-production (yes-or-no-p "Do the plants have reduced fruit production? (yes/no)? "))))
+   
+(defrule determine-black-beetle-between-leaf-sheaths ""
+   (plant-name banana)
+   =>
+   (assert (has-black-beetle-between-leaf-sheaths (yes-or-no-p "Are there black hard-shelled beetles between leaf sheaths? (yes/no)? "))))
    
 (defrule determine-irregular-yellow-patches-leaves ""
    (plant-name cabbage)
