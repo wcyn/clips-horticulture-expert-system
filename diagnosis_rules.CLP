@@ -253,6 +253,31 @@
    =>
    (assert (has-caterpillar-green-hairy (yes-or-no-p "Presence of a caterpillar that is green and hairy? (yes/no)? "))))
 
+   (defrule determine-red-pink-mold""
+   (plant-name maize)
+   =>
+   (assert (has-red-pink-mold (yes-or-no-p "Is there red/pink coloured mold on ear tip? (yes/no)? "))))
+
+   (defrule determine-husk-adhering-to-ear""
+   (plant-name maize)
+   =>
+   (assert (has-husk-adhering-to-ear(yes-or-no-p "Does the husk adhere tightly to the ear? (yes/no)? "))))
+
+   (defrule determine-white-mycelium""
+   (plant-name maize)
+   =>
+   (assert (has-white-mycelium(yes-or-no-p "Presence of white mycelium (mold) gradually moving towards base of the ear _(during onset)_? (yes/no)? "))))
+
+   (defrule determine-extensive-kernel-rotting""
+   (plant-name maize)
+   =>
+   (assert (has-extensive-kernel-rotting(yes-or-no-p "Can you observe extensive kernel rotting? (yes/no)? "))))
+
+   (defrule determine-bluish-black-perithecia-on-husks""
+   (plant-name maize)
+   =>
+   (assert (has-bluish-black-perithecia-on-husks(yes-or-no-p "Do the husks havebluish black perithecia? (yes/no)? "))))
+
    
 ; Startup n Conclusion Rules
 
