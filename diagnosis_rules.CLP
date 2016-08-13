@@ -77,7 +77,52 @@
    (plant-name rose)
    =>
    (assert (has-leaves-defoliated (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
+   
+(defrule determine-black-spots-leaves ""
+   (plant-name rose)
+   =>
+   (assert (has-black-spots-leaves (yes-or-no-p "Does the plant have black spots on its leaves? (yes/no)? "))))
+   
+(defrule determine-distance-between-spots ""
+   (plant-name rose)
+   =>
+   (assert (has-distance-between-spots (yes-or-no-p "Are the spots as far as 12mm apart? (yes/no)? "))))
+   
+(defrule determine-circular-spots-irregular-edge-yellow-halo ""
+   (plant-name rose)
+   =>
+   (assert (has-circular-spots-irregular-edge-yellow-halo (yes-or-no-p "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no)? "))))
 
+(defrule determine-yellow-leaves-fall-early ""
+   (plant-name rose)
+   =>
+   (assert (has-yellow-leaves-fall-early (yes-or-no-p "Do the plants' leaves turn yellow and fall early? (yes/no)? "))))
+   
+(defrule determine-continual-defoliation-cause-death ""
+   (plant-name rose)
+   =>
+   (assert (has-continual-defoliation-cause-death (yes-or-no-p "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no)? "))))
+
+(defrule determine-chewed-holes-of-irregular-shapes ""
+   (plant-name rose)
+   =>
+   (assert (has-chewed-holes-of-irregular-shapes (yes-or-no-p "Does the plant have chewed holes of irregular shapes in young leaves and buds? (yes/no)? "))))
+
+(defrule determine-leaves-holes-enlarge ""
+   (plant-name rose)
+   =>
+   (assert (has-leaves-holes-enlarge (yes-or-no-p "Do the leaves and holes enlarge? (yes/no)? "))))
+   
+(defrule determine-silvering-of-leaves ""
+   (plant-name rose)
+   =>
+   (assert (has-silvering-of-leaves (yes-or-no-p "Do the plants' leaves silver? (yes/no)? "))))
+   
+(defrule determine-fine-webbing-eggs-underside ""
+   (plant-name rose)
+   =>
+   (assert (has-fine-webbing-eggs-underside (yes-or-no-p "Do the plants have fine webbing and eggs on the undersides of the leaves? (yes/no)? "))))
+   
 (defrule determine-irregular-yellow-patches-leaves ""
    (plant-name cabbage)
    =>
