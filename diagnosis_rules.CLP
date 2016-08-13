@@ -278,7 +278,56 @@
    =>
    (assert (has-bluish-black-perithecia-on-husks(yes-or-no-p "Do the husks havebluish black perithecia? (yes/no)? "))))
 
-   
+   (defrule determine-gray-green-lesions-leaves""
+   (plant-name maize)
+   =>
+   (assert (has-gray-green-lesions-leaves(yes-or-no-p "Do the leaves have elliptical necrotic gray-green lesions? (yes/no)? "))))
+
+   (defrule determine-spore-formation-leaves""
+   (plant-name maize)
+   =>
+   (assert (has-spore-formation-leaves(yes-or-no-p "Is there spore formation on leaves? (yes/no)? "))))
+
+   (defrule determine-dead-tissue""
+   (plant-name maize)
+   =>
+   (assert (has-dead-tissue(yes-or-no-p "Are there large areas of dead tissue? (yes/no)? "))))
+
+   (defrule determine-defoliation-seedlings""
+   (plant-name maize)
+   =>
+   (assert (has-defoliation-seedlings(yes-or-no-p "Is there partial/total defoliation of seedlings (yes/no)? "))))
+
+   (defrule determine-withering""
+   (plant-name maize)
+   =>
+   (assert (has-withering(yes-or-no-p "Presence of withering? (yes/no)? "))))
+
+   (defrule determine-plant-lodging""
+   (plant-name maize)
+   =>
+   (assert (has-plant-lodging(yes-or-no-p "Presence of plant lodging (displacement of vertical alignment of root or stem? (yes/no)? "))))
+
+   (defrule determine-plant-death""
+   (plant-name maize)
+   =>
+   (assert (has-plant-death(yes-or-no-p "Are the plants dying? (yes/no)? "))))
+
+   (defrule determine-holes-on-grains""
+   (plant-name maize)
+   =>
+   (assert (has-holes-on-grains(yes-or-no-p "Are there circular or ragged holes on the surface of the grains? (yes/no)? "))))
+
+   (defrule determine-grains-float""
+   (plant-name maize)
+   =>
+   (assert (has-grains-float(yes-or-no-p "Do the grains float if placed on water? (yes/no)? "))))
+
+   (defrule determine-grain-dust""
+   (plant-name maize)
+   =>
+   (assert (has-grain-dust(yes-or-no-p "Presence of flour-like grain dust mixed with frass? (yes/no)? "))))
+
 ; Startup n Conclusion Rules
 
 (defrule system-banner ""
