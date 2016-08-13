@@ -78,6 +78,56 @@
    =>
    (assert (has-leaves-defoliated (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
 
+(defrule determine-irregular-yellow-patches-leaves ""
+   (plant-name cabbage)
+   =>
+   (assert (has-irregular-yellow-patches-leaves (yes-or-no-p "Does the plant have irregular yellow patches on its leaves? (yes/no)? "))))
+
+(defrule determine-fluffy-gray-growth-leaves ""
+   (plant-name cabbage)
+   =>
+   (assert (has-fluffy-gray-growth-leaves (yes-or-no-p "Does the plant have fluffy gray growth on underside of leaves? (yes/no)? "))))
+
+(defrule determine-white-pustules ""
+   (plant-name cabbage)
+   =>
+   (assert (has-white-pustules (yes-or-no-p "Does the plant have white pustules on leaves, stems or flowers? (yes/no)? "))))
+
+(defrule determine-leaves-roll-thicken ""
+   (plant-name cabbage)
+   =>
+   (assert (has-leaves-roll-thicken (yes-or-no-p "Have the plant leaves rolled and thickened? (yes/no)? "))))
+
+(defrule determine-irregularly-shaped-holes-leaves-stems ""
+   (plant-name cabbage)
+   =>
+   (assert (has-irregularly-shaped-holes-leaves-stems (yes-or-no-p "Do the plants have irregularly shaped holes in leaves and stems? (yes/no)? "))))
+
+   (defrule determine-slime-trails ""
+   (plant-name cabbage)
+   =>
+   (assert (has-slime-trails (yes-or-no-p "Are there slime trails present on the plant and surrounding soil? (yes/no)? "))))
+
+   (defrule determine-shredded-leaves ""
+   (plant-name cabbage)
+   =>
+   (assert (has-shredded-leaves (yes-or-no-p "Do the plants possess shredded leaves? (yes/no)? "))))
+
+   (defrule determine-ragged-holes ""
+   (plant-name cabbage)
+   =>
+   (assert (has-ragged-holes (yes-or-no-p "Do the plants have ragged holes in leaves bored into head? (yes/no)? "))))
+
+   (defrule determine-frass ""
+   (plant-name cabbage)
+   =>
+   (assert (has-frass (yes-or-no-p "Do the plants have green-brown faeces(frass) on leaves? (yes/no)? "))))
+
+   (defrule determine-caterpillar-green-hairy""
+   (plant-name cabbage)
+   =>
+   (assert (has-caterpillar-green-hairy (yes-or-no-p "Presence of a caterpillar that is green and hairy? (yes/no)? "))))
+
 
 ; Startup n Conclusion Rules
 
