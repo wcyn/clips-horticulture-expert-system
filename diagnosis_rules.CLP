@@ -266,7 +266,7 @@
    (defrule determine-white-mycelium""
    (plant-name maize)
    =>
-   (assert (has-white-mycelium(yes-or-no-p "Presence of white mycelium (mold) gradually moving towards base of the ear _(during onset)_? (yes/no)? "))))
+   (assert (has-white-mycelium(yes-or-no-p "Presence of white mycelium (mold) gradually moving towards base of the ear? (yes/no)? "))))
 
    (defrule determine-extensive-kernel-rotting""
    (plant-name maize)
