@@ -27,7 +27,7 @@
     else (if (eq ?response 3)
         then maize 
     else (if (eq ?response 4)
-        then roses 
+        then rose 
     else nil))))
     )
 
@@ -40,10 +40,10 @@
     (slot prescence (default no))
     (slot weight (default 0)))
 
-; To hold tallies of the weights for each disease / pest
-(deftemplate disease-weights 
-    (slot rose-rust (default 0))
-    (slot black-spot (default 0)))
+(deftemplate disease-weight
+    (slot disease-name )
+    (slot plant-name )
+    (slot weight (default 0)))
 
 ;;;; Query Rules ;;;;
 ;____________________;
@@ -53,7 +53,7 @@
     (not (diagnosis ?))
     (not (plant-name ?))
     =>
-    (assert (plant-name (which-plant "Which type of plant has a problem?  (1.cabbage 2.banana 3.maize 4.rosess)? "))))
+    (assert (plant-name (which-plant "Which type of plant has a problem?  (1.cabbage 2.banana 3.maize 4.rose)? "))))
 
 ;;;; Query Plant Conditions ;;;;
 
@@ -62,12 +62,12 @@
 ;;; Disease 1: Rose Rust ;;;
 (defrule determine-yellow-patch-leaves ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
     (assert
         (symptom-details 
             (symptom-name yellow-patch-leaves)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group rose-rust)
             (prescence 
                 (yes-or-no-p "Does the plant have yellow patches on its leaves? (yes/no)? "))
@@ -75,12 +75,12 @@
 
 (defrule determine-orange-spores-leaves ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name orange-spores-leaves)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group rose-rust)
             (prescence 
                 (yes-or-no-p "Does the plant have Orange pustules of spores underneath the leaves? (yes/no)? "))
@@ -88,12 +88,12 @@
    
 (defrule determine-leaves-fall ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name leaves-fall)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group rose-rust)
             (prescence 
                 (yes-or-no-p "Do the affected leaves fall prior to healthy ones? (yes/no)? "))
@@ -101,12 +101,12 @@
 
 (defrule determine-plants-defoliated ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name plants-defoliated)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group rose-rust)
             (prescence 
                 (yes-or-no-p "Are the plants defoliated in serious infections? (yes/no)? "))
@@ -116,12 +116,12 @@
 ;;; Disease 2: Black Spot ;;;
 (defrule determine-black-spots-leaves ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name black-spots-leaves)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have black spots on its leaves? (yes/no)? "))
@@ -129,12 +129,12 @@
    
 (defrule determine-distance-between-spots ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name distance-between-spots)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group black-spot)
             (prescence 
                 (yes-or-no-p "Are the spots as far as 12mm apart? (yes/no)? "))
@@ -142,12 +142,12 @@
    
 (defrule determine-circular-spots-irregular-edge-yellow-halo ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name circular-spots-irregular-edge-yellow-halo)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no)? "))
@@ -155,12 +155,12 @@
 
 (defrule determine-yellow-leaves-fall-early ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
    (assert
         (symptom-details 
             (symptom-name yellow-leaves-fall-early)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group black-spot)
             (prescence 
                 (yes-or-no-p "Do the plants' leaves turn yellow and fall early? (yes/no)? "))
@@ -168,12 +168,12 @@
    
 (defrule determine-continual-defoliation-cause-death ""
    (not (diagnosis ?))
-   (plant-name roses)
+   (plant-name rose)
    =>
-   (assert
+    (assert
         (symptom-details 
             (symptom-name continual-defoliation-cause-death)
-            (plant-name roses)
+            (plant-name rose)
             (symptom-group black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no)? "))
@@ -183,26 +183,26 @@
 ; ;;; Pest 1: Metallic Flea Beetles ;;;
 ; (defrule determine-chewed-holes-of-irregular-shapes ""
 ;    (not (diagnosis ?))
-;    (plant-name roses)
+;    (plant-name rose)
 ;    =>
 ;    (assert (has-chewed-holes-of-irregular-shapes (yes-or-no-p "Does the plant have chewed holes of irregular shapes in young leaves and buds? (yes/no)? "))))
 
 ; (defrule determine-leaves-holes-enlarge ""
 ;    (not (diagnosis ?))
-;    (plant-name roses)
+;    (plant-name rose)
 ;    =>
 ;    (assert (has-leaves-holes-enlarge (yes-or-no-p "Do the leaves and holes enlarge? (yes/no)? "))))
    
 ; ;;; Pest 2: Two-spotted mite, Spider Mite or Red Spider Mite ;;;
 ; (defrule determine-silvering-of-leaves ""
 ;    (not (diagnosis ?))
-;    (plant-name roses)
+;    (plant-name rose)
 ;    =>
 ;    (assert (has-silvering-of-leaves (yes-or-no-p "Do the plants' leaves silver? (yes/no)? "))))
    
 ; (defrule determine-fine-webbing-eggs-underside ""
 ;    (not (diagnosis ?))
-;    (plant-name roses)
+;    (plant-name rose)
 ;    =>
 ;    (assert (has-fine-webbing-eggs-underside (yes-or-no-p "Do the plants have fine webbing and eggs on the undersides of the leaves? (yes/no)? "))))
 
@@ -483,12 +483,9 @@
             (eq ?g:plant-name ?plant-name)
             (eq ?g:symptom-group ?symptom-group))
         (bind ?weight (+ ?weight ?g:weight)))
-        ; (if (eq ?symptom-group rose-rust)
-        ;     then (assert (disease-weights (rose-rust ?weight)))
-        ; else if (eq ?symptom-group black-spot)
-        ;     then (assert (disease-weights (black-spot ?weight)))
-        ;     ) ; to be continued...
-        
+        (assert (disease-weight (disease-name ?symptom-group)
+                                (plant-name ?plant-name)
+                                (weight ?weight)))
     (if (> ?weight ?threshold)
         then TRUE))
 
@@ -498,18 +495,32 @@
    ?f <- (check-rose-rust-diagnosis)
    =>
    (retract ?f)
-   (if (diagnose-plant roses rose-rust 70)
+   (if (diagnose-plant rose rose-rust 70)
       then
       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
 
 
 (defrule confirm-black-spot
-   ?f <- (check-black-spot-diagnosis)
-   =>
-   (retract ?f)
-   (if (diagnose-plant roses black-spot 70)
+    ?f <- (check-black-spot-diagnosis)
+    =>
+    (retract ?f)
+    (if (diagnose-plant rose black-spot 70)
         then
-        (assert (diagnosis "Your Roses seem to be Suffering from Black Spot"))))
+        (assert (diagnosis "Your Roses seem to be Suffering from Black Spot")))
+    (assert (check-most-probable)))
+
+(defrule find-most-probable-disease
+    (not (diagnosis ?))
+    ?f <- (check-most-probable)
+    (disease-weight (disease-name ?disease-name1)
+                    (plant-name ?plant-name)
+                    (weight ?weight1))
+   (not (disease-weight (weight ?weight2&:(> ?weight2 ?weight1))))
+   =>
+   ; (retract ?f)
+   (printout t crlf crlf "--------------------------------------------------------------------" crlf
+                "We don't have sufficient information on the condition of your plant." crlf
+    "But your " ?plant-name " most likey suffers from " ?disease-name1 crlf))
 
 
 ;;;; Add Advice here, maybe? ;;;;
