@@ -511,18 +511,6 @@
         then
         (assert (diagnosis "Your Roses seem to be Suffering from Black Spot"))))
 
-(defrule no-diagnosis-found
-    (not (diagnosis ?))
-    ?f <- (check-highest-probability)
-    =>
-    (retract ?f)
-    (bind ?prob(max )
-    (if (diagnose-plant roses rose-rust 70)
-        then
-        (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
-
-
-
 
 ;;;; Add Advice here, maybe? ;;;;
 
