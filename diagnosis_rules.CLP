@@ -83,7 +83,7 @@
    (not (diagnosis ?))
    (plant-name roses)
    =>
-   (assert (has-leaves-defoliated (yes-or-no-p "Do the plants defoliated in serious infections? (yes/no)? "))))
+   (assert (has-leaves-defoliated (yes-or-no-p "Are the plants defoliated in serious infections? (yes/no)? "))))
    
 ;;; Disease 2: Black Spot ;;;
 (defrule determine-black-spots-leaves ""
