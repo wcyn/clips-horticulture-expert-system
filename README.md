@@ -31,7 +31,7 @@ CLIPS> (run)
 &emsp;[`deffunction diagnose-plant`](#deffunction-diagnose-plant)  
 [Query Rules](#query-rules)  
 &emsp;[`defrule determine-plant`](#defrule-determine-plant)  
-[Query Rules for Specific Plants](#query-rules-for-specific-plants)  
+[Query Rules for Specific Symptoms](#query-rules-for-specific-symptoms)  
 &emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
 [Diagnosis Rules](#diagnosis-rules)
 
@@ -45,10 +45,10 @@ The `5` Black Spot symptoms each have a weight of `20`, since `100 / 5` is, well
 
 Eventually, the weights for the groups of symptoms for a pest or disease are added together. Only the weights of the symptoms that are present are added up.
 
-For example, if `3` out of `4` symptoms for the Rose Rust disease are present, and each symptom has a weight of `25` (`100 / 4`), then the total weight will be `75`.
+For example, if `3` out of `4` symptoms for the Rose Rust disease are present, and each symptom has a weight of `25` (`100 / 4`), then the total weight will be `75` (`3 * 25`).
 When the `threshold` of the Rose Rust disease is defined as `70`, the diagnosis for Rose Rust will be positive, since `75` is greater than `70`.
 
-If only `2` out `4` Rose Rust symptoms are present, that gives us a total weight of `50` (`25 *2`), which is less than `70`, and thus the program fires the rules for the next disease or pest.
+If only `2` out `4` Rose Rust symptoms are present, that gives us a total weight of `50` (`25 * 2`), which is less than `70`, and thus the program fires the rules for the next disease or pest.
 
 ## Template Definitions
 
@@ -115,13 +115,13 @@ __Steps__:
 __Description__: Determines the type of plant affected  
 __Rule conditions__: Only fires if __no__ `diagnosis` has been reached, and __no__ `plant-name` has been provided by the user
 
-## Query Rules for Specific Plants
+## Query Rules for Specific Symptoms
 A lot of repetition is involved here. Each symptom rule essentially has the same structure. Here's an example for the first symptom of the __Rose Rust__ disease. 
 
 ### `defrule determine-yellow-patch-leaves`
 __Description__: Determines whether the rose plant has yellow patches on its leaves  
 __Rule conditions__: Only fires if __no__ `diagnosis` has been reached __and__ `plant-name` is `rose`  
-If these conditions are reached, assert the `symptom-details` facts. Also ,ask the user a yes / no question and assign the answer to `presence`.
+If these conditions are reached, assert the [`symptom-details`](#deftemplate-symptom-details) facts. Also ,ask the user a yes / no question and assign the answer to `presence`.
 
 ```
 (defrule determine-yellow-patch-leaves ""
