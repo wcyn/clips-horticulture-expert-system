@@ -11,13 +11,29 @@ git clone https://github.com/wcyn/clips-horticulture-expert-system
 ```
 Run the [CLIPS Program](https://sourceforge.net/projects/clipsrules/): 
 
-> Click on File -> Load, then browse to the directory with the cloned files.  
- Click on `diagnosis_rules.CLP` file. Then click Open.
+&emsp;Click on File -> Load, then browse to the directory with the cloned files.  
+&emsp;Click on `diagnosis_rules.CLP` file. Then click Open.
 
 On the CLIPS command line, type:
 ``` 
 CLIPS> (run) 
 ```
+
+## Table of Contents
+[How the Weights Work](#how-the-weights-work)  
+[Template Definitions](#template-definitions)  
+&emsp;[`deftemplate symptom-details`](#deftemplate-symptom-details)  
+&emsp;[`deftemplate disease-weight`](#deftemplate-disease-weight)  
+[Function Definitions](#function-definition)  
+&emsp;[`deffunction ask-question`](#deffunction-ask-question)  
+&emsp;[`deffunction yes-or-no-p`](#deffunction-yes-or-no-p)  
+&emsp;[`deffunction which-plant`](#deffunction-which-plant)  
+&emsp;[`deffunction diagnose-plant`](#deffunction-diagnose-plant)  
+[Query Rules](#query-rules)  
+&emsp;[`defrule determine-plant`](#defrule-determine-plant)  
+[Query Rules for Specific Plants](#query-rules-for-specific-plants)  
+&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
+[Diagnosis Rules](#diagnosis-rules)
 
 ## How the weights work
 
@@ -36,7 +52,6 @@ If only `2` out `4` Rose Rust symptoms are present, that gives us a total weight
 
 ## Template Definitions
 
-<a name="symptom-details"/>
 ### `deftemplate symptom-details`
 __Description__: Defines the types of data describing the details of a symptom  
 __Slots__:  
@@ -124,4 +139,4 @@ If these conditions are reached, assert the `symptom-details` facts. Also ,ask t
 ```
 
 ## Diagnosis Rules
-_to be continued..
+_to be continued.._
