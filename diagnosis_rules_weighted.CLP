@@ -1,3 +1,17 @@
+;;;; Symptom Details Template ;;;;
+
+(deftemplate symptom-details
+    (slot symptom-name)
+    (slot plant-name)
+    (slot disease-or-pest)
+    (slot prescence (default no))
+    (slot weight (default 0)))
+
+(deftemplate disease-weight
+    (slot disease-or-pest-name )
+    (slot plant-name )
+    (slot weight (default 0)))
+
 ; Deffunctions 
 
 (deffunction ask-question (?question $?allowed-values)
@@ -31,19 +45,21 @@
     else nil))))
     )
 
-;;;; Symptom Details Template ;;;;
+; Get Weight Totals and Give Diagnosis based on Threshold
+(deffunction diagnose-plant (?plant-name ?disease-or-pest ?threshold)
+    (bind ?weight 0)
+    (do-for-all-facts ((?g symptom-details)) 
+        (and 
+            (eq ?g:prescence yes)
+            (eq ?g:plant-name ?plant-name)
+            (eq ?g:disease-or-pest ?disease-or-pest))
+        (bind ?weight (+ ?weight ?g:weight)))
+        (assert (disease-weight (disease-or-pest-name ?disease-or-pest)
+                                (plant-name ?plant-name)
+                                (weight ?weight)))
+    (if (> ?weight ?threshold)
+        then TRUE))
 
-(deftemplate symptom-details
-    (slot symptom-name)
-    (slot plant-name)
-    (slot symptom-group)
-    (slot prescence (default no))
-    (slot weight (default 0)))
-
-(deftemplate disease-weight
-    (slot disease-name )
-    (slot plant-name )
-    (slot weight (default 0)))
 
 ;;;; Query Rules ;;;;
 ;____________________;
@@ -68,7 +84,7 @@
         (symptom-details 
             (symptom-name yellow-patch-leaves)
             (plant-name rose)
-            (symptom-group rose-rust)
+            (disease-or-pest rose-rust)
             (prescence 
                 (yes-or-no-p "Does the plant have yellow patches on its leaves? (yes/no)? "))
             (weight 25))))
@@ -81,7 +97,7 @@
         (symptom-details 
             (symptom-name orange-spores-leaves)
             (plant-name rose)
-            (symptom-group rose-rust)
+            (disease-or-pest rose-rust)
             (prescence 
                 (yes-or-no-p "Does the plant have Orange pustules of spores underneath the leaves? (yes/no)? "))
             (weight 25))))
@@ -94,7 +110,7 @@
         (symptom-details 
             (symptom-name leaves-fall)
             (plant-name rose)
-            (symptom-group rose-rust)
+            (disease-or-pest rose-rust)
             (prescence 
                 (yes-or-no-p "Do the affected leaves fall prior to healthy ones? (yes/no)? "))
             (weight 25))))
@@ -107,7 +123,7 @@
         (symptom-details 
             (symptom-name plants-defoliated)
             (plant-name rose)
-            (symptom-group rose-rust)
+            (disease-or-pest rose-rust)
             (prescence 
                 (yes-or-no-p "Are the plants defoliated in serious infections? (yes/no)? "))
             (weight 25))
@@ -122,7 +138,7 @@
         (symptom-details 
             (symptom-name black-spots-leaves)
             (plant-name rose)
-            (symptom-group black-spot)
+            (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have black spots on its leaves? (yes/no)? "))
             (weight 20))))
@@ -135,7 +151,7 @@
         (symptom-details 
             (symptom-name distance-between-spots)
             (plant-name rose)
-            (symptom-group black-spot)
+            (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Are the spots as far as 12mm apart? (yes/no)? "))
             (weight 20))))
@@ -148,7 +164,7 @@
         (symptom-details 
             (symptom-name circular-spots-irregular-edge-yellow-halo)
             (plant-name rose)
-            (symptom-group black-spot)
+            (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no)? "))
             (weight 20))))
@@ -161,7 +177,7 @@
         (symptom-details 
             (symptom-name yellow-leaves-fall-early)
             (plant-name rose)
-            (symptom-group black-spot)
+            (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Do the plants' leaves turn yellow and fall early? (yes/no)? "))
             (weight 20))))
@@ -174,7 +190,7 @@
         (symptom-details 
             (symptom-name continual-defoliation-cause-death)
             (plant-name rose)
-            (symptom-group black-spot)
+            (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no)? "))
             (weight 20))
@@ -473,23 +489,6 @@
 ;    (assert (has-grain-dust(yes-or-no-p "Presence of flour-like grain dust mixed with frass? (yes/no)? "))))
 
 
-;;;; GET WEIGHT TOTALS ;;;;
-
-(deffunction diagnose-plant (?plant-name ?symptom-group ?threshold)
-    (bind ?weight 0)
-    (do-for-all-facts ((?g symptom-details)) 
-        (and 
-            (eq ?g:prescence yes)
-            (eq ?g:plant-name ?plant-name)
-            (eq ?g:symptom-group ?symptom-group))
-        (bind ?weight (+ ?weight ?g:weight)))
-        (assert (disease-weight (disease-name ?symptom-group)
-                                (plant-name ?plant-name)
-                                (weight ?weight)))
-    (if (> ?weight ?threshold)
-        then TRUE))
-
-
 ;;;; DIAGNOSES ;;;;
 (defrule confirm-rose-rust
    ?f <- (check-rose-rust-diagnosis)
@@ -512,7 +511,7 @@
 (defrule find-most-probable-disease
     (not (diagnosis ?))
     ?f <- (check-most-probable)
-    (disease-weight (disease-name ?disease-name1)
+    (disease-weight (disease-or-pest-name ?disease-or-pest-name1)
                     (plant-name ?plant-name)
                     (weight ?weight1))
    (not (disease-weight (weight ?weight2&:(> ?weight2 ?weight1))))
@@ -520,7 +519,7 @@
    ; (retract ?f)
    (printout t crlf crlf "--------------------------------------------------------------------" crlf
                 "We don't have sufficient information on the condition of your plant." crlf
-    "But your " ?plant-name " most likey suffers from " ?disease-name1 crlf))
+    "But your " ?plant-name " most likey suffers from " ?disease-or-pest-name1 crlf))
 
 
 ;;;; Add Advice here, maybe? ;;;;
