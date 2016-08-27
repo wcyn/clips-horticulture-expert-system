@@ -101,16 +101,16 @@ __Steps__:
 -- Return `cabbage` if response is `1`, `banana` if `2` and so on..
 
 ### `deffunction diagnose-plant` 
-__Description__: Get weight totals of the group of symptoms for a disease or pest and give a positive diagnosis if threshold is exceeded 
+__Description__: Get weight totals of the group of symptoms for a disease or pest and give a positive diagnosis if threshold is exceeded  
 __Arguments__:  
 -- `plant-name` - The name of the plant  
 -- `disease-or-pest` - What disease or pest the symptoms belongs to  
 -- `threshold` - The total weight that must be exceeded for a certain disease or pest to be the accepted diagnosis  
 __Steps__:  
 -- Initialize the `weight` to zero  
--- Get all the weights of facts in the `symptoms-details` [template](#symptom-details) whose `prescence` is `yes`, `plant-name` is <argument specified for `plant-name`> and whose `disease-or-pest` is <argument specified for `disease-or-pest`>  
+-- Get all the weights of facts in the `symptoms-details` [template](#symptom-details) whose `prescence` is `yes`, `plant-name` is [argument specified for `plant-name`] and whose `disease-or-pest` is [argument specified for `disease-or-pest`]  
 -- Add up those weights and assign them to `weight`    
--- If `weight` is greater than <argument given for `threshold`>, then return TRUE
+-- If `weight` is greater than [argument given for `threshold`], then return TRUE
 
 
 ## Query Rules
