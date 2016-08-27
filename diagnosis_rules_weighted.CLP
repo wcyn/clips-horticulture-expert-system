@@ -126,9 +126,14 @@
             (disease-or-pest rose-rust)
             (prescence 
                 (yes-or-no-p "Are the plants defoliated in serious infections? (yes/no)? "))
-            (weight 25))
-        (check-rose-rust-diagnosis)))
+            (weight 25))))
    
+(defrule check-rose-rust-diagnosis ""
+  (not (diagnosis ?))
+  (plant-name rose)
+  =>
+  (assert (check-rose-rust-diagnosis)))
+
 ;;; Disease 2: Black Spot ;;;
 (defrule determine-black-spots-leaves ""
    (not (diagnosis ?))
@@ -193,9 +198,13 @@
             (disease-or-pest black-spot)
             (prescence 
                 (yes-or-no-p "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no)? "))
-            (weight 20))
-        (check-black-spot-diagnosis)))
+            (weight 20))))
 
+(defrule check-black-spot-diagnosis ""
+  (not (diagnosis ?))
+  (plant-name rose)
+  =>
+  (assert (check-black-spot-diagnosis)))
 ; ;;; Pest 1: Metallic Flea Beetles ;;;
 ; (defrule determine-chewed-holes-of-irregular-shapes ""
 ;    (not (diagnosis ?))
