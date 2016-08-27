@@ -75,12 +75,7 @@
 
 ; Dynamically generate query rules ;
 
-(deffunction create-query-rules (?template
-                                ?plant-name
-                                ?disease-or-pest
-                                ?symptom
-                                ?qn
-                                ?weight)
+(deffunction create-query-rules (?template ?plant-name ?disease-or-pest ?symptom ?qn ?weight)
     (bind ?symptom-rule-name (str-cat "determine-" ?symptom))
     (build (str-cat
             "(defrule " ?symptom-rule-name
@@ -94,12 +89,8 @@
                         (disease-or-pest " ?disease-or-pest ")
                         (prescence 
                             (yes-or-no-p " ?qn "))
-                        (weight " ?weight ")))
-
-             )"
-          ) 
-    )
-)
+                        (weight " ?weight "))))"
+            )))
 
 ; Dynamically generate rules to check for diagnosis;
 (deffunction create-check-diagnosis-rule (
@@ -113,39 +104,35 @@
                 =>
                 (assert
                     (" ?symptom-rule-name ")))"
-            )) 
-)
+            )))
 
 (deffunction read-from-file (?template ?file)
-    (open ?file file-data)
-    (bind ?stop FALSE)
-    (bind ?plant-name (read file-data))
-    (bind ?disease-or-pest (read file-data))
-    ; (read file-data) ;avoid readlining empty end of line
-    (while (not ?stop)
-        (bind ?temp-line (readline file-data))
-        (if (eq ?temp-line EOF)
-            then (bind ?stop TRUE)
-        else (if (eq ?temp-line "ENDGROUP")
-
-            then (printout t "next please!" crlf)
+    (open ?file file-data) ; open the file and store data in file-data
+    (bind ?stop FALSE) ; initialize stop variable to FALSE
+    (bind ?plant-name (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
+    (bind ?disease-or-pest (read file-data)) ; 2nd line of the beginning of a new pest or disease is the disease or pest name
+    (while (not ?stop) ; while stop variable is not TRUE
+        (bind ?temp-line (readline file-data)) ; read entire line from text file
+        (if (eq ?temp-line EOF) ; if End of File
+            then (bind ?stop TRUE) ; Set stop variable to TRUE
+        else (if (eq ?temp-line "ENDGROUP") ; If "ENDOFGROUP" check for the diagnosis of the disease or pest
+            then
             (create-check-diagnosis-rule ?plant-name ?disease-or-pest)
-            (bind ?plant-name (read file-data))
-            (bind ?disease-or-pest (read file-data))
-            ; (read file-data) ;avoid readlining empty end of line
-        else (if (eq ?temp-line "")
-                then (printout t "empty") ;do nothing
+            (bind ?plant-name (read file-data)) ; Read plant name of new group of symptoms
+            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of new group of symptoms
+        else (if (eq ?temp-line "") ; If reads empty string, do nothing
+                then (printout t "") ; Do nothing
         else
-            (bind ?exp-line (explode$ ?temp-line))
-            (create-query-rules
+            (bind ?exp-line (explode$ ?temp-line)) ; delimit the line read using spaces
+            (create-query-rules ;create the rules needed to query the user
                 ?template 
                 ?plant-name
                 ?disease-or-pest
                 (implode$ (subseq$ ?exp-line 1 1))
-                (implode$ (subseq$ ?exp-line 2 2)) ;prevent double string
+                (implode$ (subseq$ ?exp-line 2 2))
                 (implode$ (subseq$ ?exp-line 3 3)))
             ))))
-    (close))
+    (close)) ;close the file when done
 
 ; Call the read-from-file function to generate the rules
 

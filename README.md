@@ -1,7 +1,7 @@
 # clips-horticulture-expert-system
-A Knowledge Based System (KBS) using CLIPS for Horticulture disease and pest diagnosis
+A Knowledge Based System (KBS) using CLIPS for Horticulture disease and pest diagnosis that __automatically generates rules__ from a .txt file. Read more about the [automation](#automated-query-rules-for-specific-symptoms)
 
-View the data about the symptoms from the [symptoms file](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.md)
+View the data about the symptoms from the [symptoms documentation](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.md)
 
 ## How to run this program
 
@@ -12,7 +12,7 @@ git clone https://github.com/wcyn/clips-horticulture-expert-system
 Run the [CLIPS Program](https://sourceforge.net/projects/clipsrules/): 
 
 &emsp;Click on File -> Load, then browse to the directory with the cloned files.  
-&emsp;Click on `diagnosis_rules.CLP` file. Then click Open.
+&emsp;Click on `diagnosis_rules_automated.CLP` file. Then click Open.
 
 On the CLIPS command line, type:
 ``` 
@@ -31,9 +31,12 @@ CLIPS> (run)
 &emsp;[`deffunction diagnose-plant`](#deffunction-diagnose-plant)  
 [Query Rules](#query-rules)  
 &emsp;[`defrule determine-plant`](#defrule-determine-plant)  
-[Query Rules for Specific Symptoms](#query-rules-for-specific-symptoms)  
-&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
+[Query Rules for Specific Symptoms](#automated-query-rules-for-specific-symptoms)  
+&emsp;[`deffunction read-from-file`](#deffunction-read-from-file)  
+&emsp;[`deffunction create-query-rules`](#deffunction-create-query-rules)  
+&emsp;&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
 [Diagnosis Rules](#diagnosis-rules)
+
 
 ## How the weights work
 
@@ -51,7 +54,7 @@ When the `threshold` of the Rose Rust disease is defined as `70`, the diagnosis 
 If only `2` out `4` Rose Rust symptoms are present, that gives us a total weight of `50` (`25 * 2`), which is less than `70`, and thus the program fires the rules for the next disease or pest.
 
 ## Template Definitions
-
+These provide a framework to hold the various groups of data items.
 ### `deftemplate symptom-details`
 __Description__: Defines the types of data describing the details of a symptom  
 __Slots__:  
@@ -115,10 +118,81 @@ __Steps__:
 __Description__: Determines the type of plant affected  
 __Rule conditions__: Only fires if __no__ `diagnosis` has been reached, and __no__ `plant-name` has been provided by the user
 
-## Query Rules for Specific Symptoms
-A lot of repetition is involved here. Each symptom rule essentially has the same structure. Here's an example for the first symptom of the __Rose Rust__ disease. 
+## Automated Query Rules for Specific Symptoms
+Rules used to query the user about the various [symptoms](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.md) are automatically generated from the [`symptoms.txt`](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.txt) file.
+For all the rules to be generated, the function [`reaad-from-file`](#deffunction read-from-file) is called, which loops through the file extracting the data that is needed to create the rules.
 
-### `defrule determine-yellow-patch-leaves`
+### `deffunction read-from-file`
+__Description__: Loop through the text file with the data and use the [`create-query-rules`](#deffunction-create-query-rules) function to create rules for each symptom   
+__Arguments__:  
+-- `template` - The [template](#template-details) to use for the details of the symptoms  
+-- `file` - The name of the file containing the data  
+```
+(deffunction read-from-file (?template ?file)
+    (open ?file file-data) ; open the file and store data in file-data
+    (bind ?stop FALSE) ; initialize stop variable to FALSE
+    (bind ?plant-name (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
+    (bind ?disease-or-pest (read file-data)) ; 2nd line of the beginning of a new pest or disease is the disease or pest name
+    (while (not ?stop) ; while stop variable is not TRUE
+        (bind ?temp-line (readline file-data)) ; read entire line from text file
+        (if (eq ?temp-line EOF) ; if End of File
+            then (bind ?stop TRUE) ; Set stop variable to TRUE
+        else (if (eq ?temp-line "ENDGROUP") ; If "ENDOFGROUP" check for the diagnosis of the disease or pest
+            (create-check-diagnosis-rule ?plant-name ?disease-or-pest)
+            (bind ?plant-name (read file-data)) ; Read plant name of new group of symptoms
+            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of new group of symptoms
+        else (if (eq ?temp-line "") ; If reads empty string, do nothing
+                then (printout t "") ; Do nothing
+        else
+            (bind ?exp-line (explode$ ?temp-line)) ; delimit the line read using spaces
+            (create-query-rules ;create the rules needed to query the user
+                ?template 
+                ?plant-name
+                ?disease-or-pest
+                (implode$ (subseq$ ?exp-line 1 1))
+                (implode$ (subseq$ ?exp-line 2 2))
+                (implode$ (subseq$ ?exp-line 3 3)))
+            ))))
+    (close)) ;close the file when done
+```
+
+### `deffunction create-query-rules`
+__Description__: Generate a rule to query the user about a symptom   
+__Arguments__:  
+-- `template` - The [template](#template-details) to use for the details of the symptoms  
+-- `plant-name` - The name of the plant  
+-- `disease-or-pest` - What disease or pest the symptoms belongs to  
+-- `symptom` - The name of the symptom to ask the user about  
+-- `qn` - The question to ask the user  
+-- `weight` - The weight that the symptom contributes to the overal disease or pest  
+
+The function code is as shown:
+```
+(deffunction create-query-rules (?template ?plant-name ?disease-or-pest ?symptom ?qn ?weight)
+    (bind ?symptom-rule-name (str-cat "determine-" ?symptom))
+    (build (str-cat
+            "(defrule " ?symptom-rule-name
+                "(not (diagnosis ?))
+                 (plant-name " ?plant-name ")
+                =>
+                (assert
+                    (" ?template 
+                        "(symptom-name " ?symptom ")
+                        (plant-name " ?plant-name ")
+                        (disease-or-pest " ?disease-or-pest ")
+                        (prescence 
+                            (yes-or-no-p " ?qn "))
+                        (weight " ?weight "))))"
+            )))
+```
+If this function is run as such (remember that it depends on the `yes-or-no-p` function):
+```
+CLIPS> (create-query-rules symptom-details rose rose-rust yellow-patch-leaves "\"Yellow patched leaves? \"" 20)
+```
+
+It will generate a rule called `determine-yellow-patch-leaves` that looks like this:
+
+#### `defrule determine-yellow-patch-leaves`
 __Description__: Determines whether the rose plant has yellow patches on its leaves  
 __Rule conditions__: Only fires if __no__ `diagnosis` has been reached __and__ `plant-name` is `rose`  
 If these conditions are reached, assert the [`symptom-details`](#deftemplate-symptom-details) facts. Also ,ask the user a yes / no question and assign the answer to `presence`.
@@ -134,7 +208,7 @@ If these conditions are reached, assert the [`symptom-details`](#deftemplate-sym
             (plant-name rose)
             (disease-or-pest rose-rust)
             (prescence 
-                (yes-or-no-p "Does the plant have yellow patches on its leaves? (yes/no)? "))
+                (yes-or-no-p "Yellow patched leaves? "))
             (weight 25))))
 ```
 
