@@ -31,7 +31,7 @@ CLIPS> (run)
 &emsp;[`deffunction diagnose-plant`](#deffunction-diagnose-plant)  
 [Query Rules](#query-rules)  
 &emsp;[`defrule determine-plant`](#defrule-determine-plant)  
-[Query Rules for Specific Symptoms](#automated-query-rules-for-specific-symptoms)  
+[Automated Query Rules for Specific Symptoms](#automated-query-rules-for-specific-symptoms)  
 &emsp;[`deffunction read-from-file`](#deffunction-read-from-file)  
 &emsp;[`deffunction create-query-rules`](#deffunction-create-query-rules)  
 &emsp;&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
@@ -120,7 +120,7 @@ __Rule conditions__: Only fires if __no__ `diagnosis` has been reached, and __no
 
 ## Automated Query Rules for Specific Symptoms
 Rules used to query the user about the various [symptoms](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.md) are automatically generated from the [`symptoms.txt`](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.txt) file.
-For all the rules to be generated, the function [`reaad-from-file`](#deffunction read-from-file) is called, which loops through the file extracting the data that is needed to create the rules.
+For all the rules to be generated, the function [`read-from-file`](#deffunction read-from-file) is called, which loops through the file extracting the data that is needed to create the rules.
 
 ### `deffunction read-from-file`
 __Description__: Loop through the text file with the data and use the [`create-query-rules`](#deffunction-create-query-rules) function to create rules for each symptom   
