@@ -118,8 +118,8 @@
         else (if (eq ?temp-line "ENDGROUP") ; If "ENDOFGROUP" check for the diagnosis of the disease or pest
             then
             (create-check-diagnosis-rule ?plant-name ?disease-or-pest)
-            (bind ?plant-name (read file-data)) ; Read plant name of new group of symptoms
-            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of new group of symptoms
+            (bind ?plant-name (read file-data)) ; Read plant name of next group of symptoms
+            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of next group of symptoms
         else (if (eq ?temp-line "") ; If reads empty string, do nothing
                 then (printout t "") ; Do nothing
         else

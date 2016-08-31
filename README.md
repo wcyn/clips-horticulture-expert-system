@@ -109,7 +109,7 @@ __Arguments__:
 __Steps__:  
 -- Initialize the `weight` to zero  
 -- Get all the weights of facts in the `symptoms-details` [template](#symptom-details) whose `prescence` is `yes`, `plant-name` is [argument specified for `plant-name`] and whose `disease-or-pest` is [argument specified for `disease-or-pest`]  
--- Add up those weights and assign them to `weight`    
+-- Add up those weights and assign them to `weight`    b
 -- If `weight` is greater than [argument given for `threshold`], then return TRUE
 
 
@@ -138,9 +138,10 @@ __Arguments__:
         (if (eq ?temp-line EOF) ; if End of File
             then (bind ?stop TRUE) ; Set stop variable to TRUE
         else (if (eq ?temp-line "ENDGROUP") ; If "ENDOFGROUP" check for the diagnosis of the disease or pest
+            then
             (create-check-diagnosis-rule ?plant-name ?disease-or-pest)
-            (bind ?plant-name (read file-data)) ; Read plant name of new group of symptoms
-            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of new group of symptoms
+            (bind ?plant-name (read file-data)) ; Read plant name of the group of symptoms
+            (bind ?disease-or-pest (read file-data)) ; Read disease or pest name of the next group of symptoms
         else (if (eq ?temp-line "") ; If reads empty string, do nothing
                 then (printout t "") ; Do nothing
         else
