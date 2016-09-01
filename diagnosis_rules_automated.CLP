@@ -12,6 +12,7 @@
     (slot plant-name )
     (slot weight (default 0)))
 
+(defglobal ?*analysis* = NIL)
 ; Deffunctions 
 
 (deffunction ask-question (?question $?allowed-values)
@@ -32,6 +33,12 @@
         then yes 
     else no))
 
+(deffunction analysis-mode (?response)
+   (if (or (eq ?response yes) (eq ?response y))
+        then (bind ?*analysis* TRUE) 
+    else (bind ?*analysis* FALSE) ))
+
+
 (deffunction which-plant (?question)
     (bind ?response (ask-question ?question 1 2 3 4))
     (if (eq ?response 1)
@@ -45,18 +52,40 @@
     else nil))))
     )
 
-; Get Weight Totals and Give Diagnosis based on Threshold
+; Get confidence level and Give Diagnosis based on Threshold
 (deffunction diagnose-plant (?plant-name ?disease-or-pest ?threshold)
-    (bind ?weight 0)
+    (bind ?weight 1)
+    (if ?*analysis*
+        then
+        (printout t "" crlf 
+                    "Calculating total confidence level for "
+                    ?disease-or-pest "..." crlf))
     (do-for-all-facts ((?g symptom-details)) 
         (and 
             (eq ?g:prescence yes)
             (eq ?g:plant-name ?plant-name)
             (eq ?g:disease-or-pest ?disease-or-pest))
-        (bind ?weight (+ ?weight ?g:weight)))
-        (assert (disease-weight (disease-or-pest-name ?disease-or-pest)
-                                (plant-name ?plant-name)
-                                (weight ?weight)))
+        (if ?*analysis*
+            then
+            (printout t ?g:symptom-name " confidence level: " ?g:weight crlf)
+            (printout t "Calculation: " ?weight " * (1 - "  ?g:weight ")" crlf))
+        (bind ?weight (* ?weight (- 1 ?g:weight)))
+        (if ?*analysis*
+            then
+            (printout t "= " ?weight crlf "" crlf)))
+    (if ?*analysis*
+        then
+        (printout t "--------------------------------------------------" crlf
+        "Total confidence level for " ?disease-or-pest " (1 - " ?weight ")"crlf))
+    (bind ?weight (- 1 ?weight))
+    (if ?*analysis*
+        then
+        (printout t "= " ?weight crlf 
+        "And Threshold" crlf "= "?threshold crlf
+        "--------------------------------------------------" crlf "" crlf))
+    (assert (disease-weight (disease-or-pest-name ?disease-or-pest)
+                            (plant-name ?plant-name)
+                            (weight ?weight)))
     (if (> ?weight ?threshold)
         then TRUE))
 
@@ -64,8 +93,8 @@
 ;;;; Query Rules ;;;;
 ;____________________;
 
-
 (defrule determine-plant "Rules for when no plant name or diagnosis is available"
+    (analysis)
     (not (diagnosis ?))
     (not (plant-name ?))
     =>
@@ -147,7 +176,7 @@
    ?f <- (check-rose-rust-diagnosis)
    =>
    (retract ?f)
-   (if (diagnose-plant rose rose-rust 70)
+   (if (diagnose-plant rose rose-rust 0.7)
       then
       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
 
@@ -156,7 +185,7 @@
     ?f <- (check-black-spot-diagnosis)
     =>
     (retract ?f)
-    (if (diagnose-plant rose black-spot 70)
+    (if (diagnose-plant rose black-spot 0.7)
         then
         (assert (diagnosis "Your Roses seem to be Suffering from Black Spot")))
     (assert (check-most-probable)))
@@ -170,7 +199,7 @@
    (not (disease-weight (weight ?weight2&:(> ?weight2 ?weight1))))
    =>
    ; (retract ?f)
-   (printout t crlf crlf "--------------------------------------------------------------------" crlf
+   (printout t crlf crlf "********************DIAGNOSIS********************" crlf
                 "We don't have sufficient information on the condition of your plant." crlf
     "But your " ?plant-name " most likey suffers from " ?disease-or-pest-name1 crlf))
 
@@ -182,15 +211,26 @@
 (defrule system-banner ""
     (declare (salience 10))
     =>
-    (printout t crlf crlf)
-    (printout t "Horticulture Diagnosis Expert System")
+    (printout t crlf)
+    (printout t "------------------------------------------------------" crlf)
+    (printout t "        Horticulture Diagnosis Expert System" crlf)
+    (printout t "------------------------------------------------------")
     (printout t crlf crlf))
+
+(defrule determine-analysis "Rules for when no analysis mode has been set"
+    (not (analysis ?))
+    (not (diagnosis ?))
+    (not (plant-name ?))
+    =>
+    (analysis-mode (yes-or-no-p "Would you like to activate Analysis Mode to see how the diagnosis is derived? (yes/no)? "))
+    (printout t "" crlf)
+    (assert (analysis)))
 
 (defrule print-diagnosis ""
     (declare (salience 10))
     (diagnosis ?item)
     =>
     (printout t crlf crlf)
-    (printout t "Diagnosis:")
+    (printout t "---------------------DIAGNOSIS--------------------")
     (printout t crlf crlf)
     (format t " %s%n%n" ?item))

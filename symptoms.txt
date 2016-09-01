@@ -1,13 +1,13 @@
 rose rose-rust
-yellow-patch-leaves "Does the plant have yellow patches on its leaves? (yes/no?) " 25
-orange-spores-leaves "Does the plant have Orange pustules of spores underneath the leaves? (yes/no?) " 25
-leaves-fall "Do the affected leaves fall prior to healthy ones? (yes/no?) " 25
-plants-defoliated "Are the plants defoliated in serious infections? (yes/no?) " 25
+yellow-patch-leaves "Does the plant have yellow patches on its leaves? (yes/no?) " 0.4
+orange-spores-leaves "Does the plant have Orange pustules of spores underneath the leaves? (yes/no?) " 0.5
+leaves-fall "Do the affected leaves fall prior to healthy ones? (yes/no?) " 0.3
+plants-defoliated "Are the plants defoliated in serious infections? (yes/no?) " 0.6
 ENDGROUP
 rose black-spot
-black-spots-leaves "Does the plant have black spots on its leaves? (yes/no?) " 20
-distance-between-spots "Are the spots as far as 12mm apart? (yes/no?) " 20
-circular-spots-irregular-edge-yellow-halo "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no?) " 20
-yellow-leaves-fall-early "Do the plants' leaves turn yellow and fall early? (yes/no?) " 20
-continual-defoliation-cause-death "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no?) " 20
+black-spots-leaves "Does the plant have black spots on its leaves? (yes/no?) " 0.6
+distance-between-spots "Are the spots as far as 12mm apart? (yes/no?) " 0.5
+circular-spots-irregular-edge-yellow-halo "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no?) " 0.5
+yellow-leaves-fall-early "Do the plants' leaves turn yellow and fall early? (yes/no?) " 0.4
+continual-defoliation-cause-death "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no?) " 0.4
 ENDGROUP
