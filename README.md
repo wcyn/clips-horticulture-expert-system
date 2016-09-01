@@ -56,13 +56,11 @@ As such:
 If `yellow-patch-leaves` and `leaves-fall` are set to true. Then we shall obtain a confidence level of the rose flower having rose-rust through a number of calculations:  
 - `yellow-patch-leaves => not(rose-rust)` by a factor of 0.6 and `leaves-fall => not(rose-rust)` by a factor of 0.7
 - `yellow-patch-leaves + leaves-fall => not(rose-rust)` by a factor of `0.6 * 0.7` = `0.42`
-- Which, after inverting gives us: `yellow-patch-leaves + leaves-fall => rose-rust` by a factor of `1 - 0.42` = `0.58` 
+- Which, after inverting gives us: `yellow-patch-leaves + leaves-fall => rose-rust` by a factor of `1 - 0.42` = **`0.58`** 
 
 If we set the threshold to `0.7`, the diagnosis for rose-rust would fail.  
 
-But if `orange-spores-leaves` symptom was also present, we would have a confidence factor of `(1 - (0.6 * 0.7 * 0.5)) = 1 - 0.21 = 0.79`, and since `0.79 > 0.7`, the diagnosis for `rose-rust` would be true.
-
-If you'd like to see these details when running the progrem, type `yes` when prompted about seeing how the diagnoses are derived.
+But if `orange-spores-leaves` symptom was also present, we would have a confidence factor of `(1 - (0.6 * 0.7 * 0.5)) = 1 - 0.21 = `**`0.79`**, and since `0.79 > 0.7`, the diagnosis for `rose-rust` would be true.
 
 ## Template Definitions
 These provide a framework to hold the various groups of data items.

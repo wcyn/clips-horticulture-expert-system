@@ -135,7 +135,31 @@
                     (" ?symptom-rule-name ")))"
             )))
 
-(deffunction read-from-file (?template ?file)
+; Dynamically generate diagnosis rules ;
+; (create-diagnosis-rules rose rose-rust 0.7 "Your Plants Seem to be suffering from Rose Rustnessness")
+(deffunction create-diagnosis-rules (?plant-name ?disease-or-pest ?threshold ?diagnosis-st)
+    (bind ?diagnosis-rule-name (str-cat "confirm-" ?disease-or-pest))
+    (bind ?diagnosis-fact-name (str-cat "check-" ?disease-or-pest "-diagnosis"))
+    (build (str-cat
+            "(defrule " ?diagnosis-rule-name
+            " ?f <- (" ?diagnosis-fact-name ")
+                =>
+                (retract ?f)
+                (if (diagnose-plant " ?plant-name " " ?disease-or-pest " " ?threshold ")
+                    then
+                    (assert (diagnosis " ?diagnosis-st "))))"
+            )))
+
+; (defrule confirm-rose-rust
+;    ?f <- (check-rose-rust-diagnosis)
+;    =>
+;    (retract ?f)
+;    (if (diagnose-plant rose rose-rust 0.7)
+;       then
+;       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
+
+
+(deffunction read-from-symptoms-file (?template ?file)
     (open ?file file-data) ; open the file and store data in file-data
     (bind ?stop FALSE) ; initialize stop variable to FALSE
     (bind ?plant-name (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
@@ -163,22 +187,50 @@
             ))))
     (close)) ;close the file when done
 
-; Call the read-from-file function to generate the rules
 
+(deffunction read-from-diagnoses-file (?file)
+    (open ?file file-data) ; open the file and store data in file-data
+    (bind ?stop FALSE) ; initialize stop variable to FALSE
+    (bind ?plant-name (read file-data)) ; 1st line of the beginning of a set of diagnoses is the plant name
+    (while (not ?stop) ; while stop variable is not TRUE
+        (bind ?temp-line (readline file-data)) ; read entire line from text file
+        (if (eq ?temp-line EOF) ; if End of File
+            then (bind ?stop TRUE) ; Set stop variable to TRUE
+        else (if (eq ?temp-line "ENDGROUP") ; If "ENDGROUP" check for the diagnosis of the disease or pest
+            then
+            (bind ?plant-name (read file-data)) ; Read plant name of next set of diagnoses
+        else (if (eq ?temp-line "") ; If reads empty string, do nothing
+                then (printout t "") ; Do nothing
+        else
+            (bind ?exp-line (explode$ ?temp-line)) ; delimit the line read using spaces
+            (create-diagnosis-rules ;create the rules needed to diagnose the plant
+                ?plant-name
+                (implode$ (subseq$ ?exp-line 1 1))
+                (implode$ (subseq$ ?exp-line 2 2))
+                (implode$ (subseq$ ?exp-line 3 3)))
+            ))))
+    (close)) ;close the file when done
+
+; Call the read-from-symptoms-file and read-from-diagnoses-file functions to generate the rules
 (defrule start-program
    (declare (salience 1))
    =>
-   (read-from-file symptom-details symptoms.txt))
+   (read-from-symptoms-file symptom-details symptoms.txt)
+   (read-from-diagnoses-file diagnoses.txt))
 
+(defrule check-most-probable-diagnosis
+   (not (diagnosis ?))
+   =>
+   (assert (check-most-probable)))
 
 ;;;; DIAGNOSES ;;;;
-(defrule confirm-rose-rust
-   ?f <- (check-rose-rust-diagnosis)
-   =>
-   (retract ?f)
-   (if (diagnose-plant rose rose-rust 0.7)
-      then
-      (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
+; (defrule confirm-rose-rust
+;    ?f <- (check-rose-rust-diagnosis)
+;    =>
+;    (retract ?f)
+;    (if (diagnose-plant rose rose-rust 0.7)
+;       then
+;       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
 
 
 (defrule confirm-black-spot
@@ -189,6 +241,14 @@
         then
         (assert (diagnosis "Your Roses seem to be Suffering from Black Spot")))
     (assert (check-most-probable)))
+
+(defrule confirm-metallic-flea-beetle
+   ?f <- (check-metallic-flea-beetle-diagnosis)
+   =>
+   (retract ?f)
+   (if (diagnose-plant rose metallic-flea-beetle 0.7)
+      then
+      (assert (diagnosis "Your Roses seem to be Suffering from Metallic Flee Beetles"))))
 
 (defrule find-most-probable-disease
     (not (diagnosis ?))
@@ -218,7 +278,7 @@
     (printout t crlf crlf))
 
 (defrule determine-analysis "Rules for when no analysis mode has been set"
-    (declare (salience 10))
+    (declare (salience 9))
     (not (analysis ?))
     =>
     (analysis-mode (yes-or-no-p "Would you like to activate Analysis Mode to see how the diagnosis is derived? (yes/no)? "))
