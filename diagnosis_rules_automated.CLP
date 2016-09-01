@@ -55,7 +55,7 @@
 ; Get confidence level and Give Diagnosis based on Threshold
 (deffunction diagnose-plant (?plant-name ?disease-or-pest ?threshold)
     (bind ?weight 1)
-    (if ?*analysis*
+    (if ?*analysis* ; if analysis mode is TRUE
         then
         (printout t "" crlf 
                     "Calculating total confidence level for "
@@ -150,15 +150,6 @@
                     then
                     (assert (diagnosis " ?diagnosis-st "))))"
             )))
-
-; (defrule confirm-rose-rust
-;    ?f <- (check-rose-rust-diagnosis)
-;    =>
-;    (retract ?f)
-;    (if (diagnose-plant rose rose-rust 0.7)
-;       then
-;       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
-
 
 (deffunction read-from-symptoms-file (?template ?file)
     (open ?file file-data) ; open the file and store data in file-data

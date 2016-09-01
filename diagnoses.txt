@@ -1,0 +1,4 @@
+rose
+rose-rust "Your plants seem to be suffering from Rose Rust"
+black-spot "Your plants seem to be suffering from Black Spot"
+ENDGROUP

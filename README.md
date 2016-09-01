@@ -32,7 +32,7 @@ CLIPS> (run)
 [Query Rules](#query-rules)  
 &emsp;[`defrule determine-plant`](#defrule-determine-plant)  
 [Automated Query Rules for Specific Symptoms](#automated-query-rules-for-specific-symptoms)  
-&emsp;[`deffunction read-from-file`](#deffunction-read-from-file)  
+&emsp;[`deffunction read-from-symptoms-file`](#deffunction-read-from-symptoms-file)  
 &emsp;[`deffunction create-query-rules`](#deffunction-create-query-rules)  
 &emsp;&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
 [Diagnosis Rules](#diagnosis-rules)
@@ -129,15 +129,15 @@ __Rule conditions__: Only fires if __no__ `diagnosis` has been reached, and __no
 
 ## Automated Query Rules for Specific Symptoms
 Rules used to query the user about the various [symptoms](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.md) are automatically generated from the [`symptoms.txt`](https://github.com/wcyn/clips-horticulture-expert-system/blob/master/symptoms.txt) file.
-For all the rules to be generated, the function [`read-from-file`](#deffunction read-from-file) is called, which loops through the file extracting the data that is needed to create the rules.
+For all the rules to be generated, the function [`read-from-symptoms-file`](#deffunction read-from-symptoms-file) is called, which loops through the file extracting the data that is needed to create the rules.
 
-### `deffunction read-from-file`
+### `deffunction read-from-symptoms-file`
 __Description__: Loop through the text file with the data and use the [`create-query-rules`](#deffunction-create-query-rules) function to create rules for each symptom   
 __Arguments__:  
 -- `template` - The [template](#template-details) to use for the details of the symptoms  
 -- `file` - The name of the file containing the data  
 ```
-(deffunction read-from-file (?template ?file)
+(deffunction read-from-symptoms-file (?template ?file)
     (open ?file file-data) ; open the file and store data in file-data
     (bind ?stop FALSE) ; initialize stop variable to FALSE
     (bind ?plant-name (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
