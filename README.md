@@ -53,7 +53,7 @@ As such:
 - leaves-fall `=>` rose-rust (by 0.3)
 - plants-defoliated `=>` rose-rust (by 0.6)
 
-If `yellow-patch-leaves` and `leaves-fall` are set to true. Then we shall be confident that the rose flower has rose-rust is true by a number of calculations:  
+If `yellow-patch-leaves` and `leaves-fall` are set to true. Then we shall obtain a confidence level of the rose flower having rose-rust through a number of calculations:  
 - `yellow-patch-leaves => not(rose-rust)` by a factor of 0.6 and `leaves-fall => not(rose-rust)` by a factor of 0.7
 - `yellow-patch-leaves + leaves-fall => not(rose-rust)` by a factor of `0.6 * 0.7` = `0.42`
 - Which, after inverting gives us: `yellow-patch-leaves + leaves-fall => rose-rust` by a factor of `1 - 0.42` = `0.58` 
