@@ -218,9 +218,8 @@
     (printout t crlf crlf))
 
 (defrule determine-analysis "Rules for when no analysis mode has been set"
+    (declare (salience 10))
     (not (analysis ?))
-    (not (diagnosis ?))
-    (not (plant-name ?))
     =>
     (analysis-mode (yes-or-no-p "Would you like to activate Analysis Mode to see how the diagnosis is derived? (yes/no)? "))
     (printout t "" crlf)

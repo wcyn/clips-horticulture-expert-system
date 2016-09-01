@@ -62,6 +62,8 @@ If we set the threshold to `0.7`, the diagnosis for rose-rust would fail.
 
 But if `orange-spores-leaves` symptom was also present, we would have a confidence factor of `(1 - (0.6 * 0.7 * 0.5)) = 1 - 0.21 = 0.79`, and since `0.79 > 0.7`, the diagnosis for `rose-rust` would be true.
 
+If you'd like to see these details when running the progrem, type `yes` when prompted about seeing how the diagnoses are derived.
+
 ## Template Definitions
 These provide a framework to hold the various groups of data items.
 ### `deftemplate symptom-details`
