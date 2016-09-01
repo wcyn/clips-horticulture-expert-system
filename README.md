@@ -39,19 +39,28 @@ CLIPS> (run)
 
 
 ## How the weights work
+Each symptom has an assigned **certainty factor** (a number between `0` and `1`), which defines the **confidence level** of the prescence of the disease if the symptom is true. The certainty factors are merely opinions and are therefore not supported by statistical evidence. 
 
-Each symptom has a weight, depending on the disease or pest.  
-The weights of each group of symptoms for a certain disease is obtained by diving `100` by the total number of symptoms for that disease.
+For example, Rose Rust has four symptoms:  
+- yellow-patch-leaves (certainty factor: 0.4)
+- orange-spores-leaves (certainty factor: 0.5)
+- leaves-fall (certainty factor: 0.3)
+- plants-defoliated (certainty factor: 0.6)
 
-For example, Rose Rust has four symptoms, therefore, `100 / 4` gives us a weight of `25` for each symptom.
-The `5` Black Spot symptoms each have a weight of `20`, since `100 / 5` is, well, `20`.
+As such:
+- yellow-patch-leaves `=>` rose-rust (by 0.4)
+- orange-spores-leaves `=>` rose-rust (by 0.5)
+- leaves-fall `=>` rose-rust (by 0.3)
+- plants-defoliated `=>` rose-rust (by 0.6)
 
-Eventually, the weights for the groups of symptoms for a pest or disease are added together. Only the weights of the symptoms that are present are added up.
+If `yellow-patch-leaves` and `leaves-fall` are set to true. Then we shall be confident that the rose flower has rose-rust is true by a number of calculations:  
+- `yellow-patch-leaves => not(rose-rust)` by a factor of 0.6 and `leaves-fall => not(rose-rust)` by a factor of 0.7
+- `yellow-patch-leaves + leaves-fall => not(rose-rust)` by a factor of `0.6 * 0.7` = `0.42`
+- Which, after inverting gives us: `yellow-patch-leaves + leaves-fall => rose-rust` by a factor of `1 - 0.42` = `0.58` 
 
-For example, if `3` out of `4` symptoms for the Rose Rust disease are present, and each symptom has a weight of `25` (`100 / 4`), then the total weight will be `75` (`3 * 25`).
-When the `threshold` of the Rose Rust disease is defined as `70`, the diagnosis for Rose Rust will be positive, since `75` is greater than `70`.
+If we set the threshold to `0.7`, the diagnosis for rose-rust would fail.  
 
-If only `2` out `4` Rose Rust symptoms are present, that gives us a total weight of `50` (`25 * 2`), which is less than `70`, and thus the program fires the rules for the next disease or pest.
+But if `orange-spores-leaves` symptom was also present, we would have a confidence factor of `(1 - (0.6 * 0.7 * 0.5)) = 1 - 0.21 = 0.79`, and since `0.79 > 0.7`, the diagnosis for `rose-rust` would be true.
 
 ## Template Definitions
 These provide a framework to hold the various groups of data items.
