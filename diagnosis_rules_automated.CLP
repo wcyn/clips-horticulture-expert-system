@@ -137,9 +137,10 @@
 
 ; Dynamically generate diagnosis rules ;
 ; (create-diagnosis-rules rose rose-rust 0.7 "Your Plants Seem to be suffering from Rose Rustnessness")
-(deffunction create-diagnosis-rules (?plant-name ?disease-or-pest ?threshold ?diagnosis-st)
+(deffunction create-diagnosis-rules (?plant-name ?disease-or-pest ?diagnosis-st)
     (bind ?diagnosis-rule-name (str-cat "confirm-" ?disease-or-pest))
     (bind ?diagnosis-fact-name (str-cat "check-" ?disease-or-pest "-diagnosis"))
+    (bind ?threshold 0.7) ; threshold value
     (build (str-cat
             "(defrule " ?diagnosis-rule-name
             " ?f <- (" ?diagnosis-fact-name ")
@@ -206,8 +207,7 @@
             (create-diagnosis-rules ;create the rules needed to diagnose the plant
                 ?plant-name
                 (implode$ (subseq$ ?exp-line 1 1))
-                (implode$ (subseq$ ?exp-line 2 2))
-                (implode$ (subseq$ ?exp-line 3 3)))
+                (implode$ (subseq$ ?exp-line 2 2)))
             ))))
     (close)) ;close the file when done
 
@@ -233,23 +233,6 @@
 ;       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
 
 
-(defrule confirm-black-spot
-    ?f <- (check-black-spot-diagnosis)
-    =>
-    (retract ?f)
-    (if (diagnose-plant rose black-spot 0.7)
-        then
-        (assert (diagnosis "Your Roses seem to be Suffering from Black Spot")))
-    (assert (check-most-probable)))
-
-(defrule confirm-metallic-flea-beetle
-   ?f <- (check-metallic-flea-beetle-diagnosis)
-   =>
-   (retract ?f)
-   (if (diagnose-plant rose metallic-flea-beetle 0.7)
-      then
-      (assert (diagnosis "Your Roses seem to be Suffering from Metallic Flee Beetles"))))
-
 (defrule find-most-probable-disease
     (not (diagnosis ?))
     ?f <- (check-most-probable)
@@ -259,9 +242,9 @@
    (not (disease-weight (weight ?weight2&:(> ?weight2 ?weight1))))
    =>
    ; (retract ?f)
-   (printout t crlf crlf "********************DIAGNOSIS********************" crlf
-                "We don't have sufficient information on the condition of your plant." crlf
-    "But your " ?plant-name " most likey suffers from " ?disease-or-pest-name1 crlf))
+   (printout t crlf crlf "---------------------DIAGNOSIS--------------------" crlf crlf
+                "  We don't have sufficient information on the condition of your plant." crlf
+    "  But your " ?plant-name " most likey suffers from " ?disease-or-pest-name1 crlf))
 
 
 ;;;; Add Advice here, maybe? ;;;;
