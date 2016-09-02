@@ -70,7 +70,7 @@
 - Presence of caterpillar that is green and hairy
 
 ## MAIZE
-### Disease 1: Giberella Ear Rot
+### Disease 1: Gibberella Ear Rot
 - Red/Pink coloured mold on ear tip
 - Husk adhering tightly to the ear
 - White mycelium (mold) gradually moving towards base of the ear _(during onset)_

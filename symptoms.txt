@@ -61,7 +61,7 @@ ragged-holes "Do the plants have ragged holes in leaves bored into head? (yes/no
 frass "Do the plants have green-brown faeces(frass) on leaves? (yes/no)? " 0.4
 caterpillar-green-hairy "Presence of a caterpillar that is green and hairy? (yes/no)? " 0.6
 ENDGROUP
-maize gibrella-ear-rot
+maize gibberella-ear-rot
 red-pink-mold "Is there red or pink coloured mold on ear tip? (yes/no)? " 0.4
 husk-adhering-to-ear "Does the husk adhere tightly to the ear? (yes/no)? " 0.6
 white-mycelium "Presence of white mold gradually moving towards base of the ear? (yes/no)? " 0.5

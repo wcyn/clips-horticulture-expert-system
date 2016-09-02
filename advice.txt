@@ -126,104 +126,55 @@ For more information, read http://www.it2.fr/wp-content/uploads/2014/11/DOC_IT2_
 ENDGROUP
 cabbage downy-mildew
 -----Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
+- Pick off and dispose of (by burial, burning or consigning to the council green waste) 
+affected leaves as soon as symptoms are seen
+- Remove and destroy severely affected plants
+- Avoid dense planting and control weeds, so that
+there is good air circulation around the plants
+- In glasshouses, try to avoid prolonged leaf wetness or periods of high humidity
+- Avoid watering plants in the evening, as this can lead to high humidity or leaf wetness
+that persists throughout the night.
+- Water early in the morning so that leaf surfaces dry out rapidly
+- To avoid infection from soil-borne resting spores, practice crop rotation for 
+vegetables, and avoid re-planting with the same host for at least a year where an ornamental
+plant has been affected
 -----Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+There are no fungicides available to amateur gardeners for use against downy mildews.
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=683
 ENDGROUP
 cabbage white-rust
 -----Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
+- Quarantine affected plants
+- Use good quality seed, long crop rotations, and remove debris after harvest.  
+- Irrigate for short periods early in the day, use wide row spacing, and plant in the
+direction of prevailing winds so leaves dry rapidly.
+- Maintain appropriate crop nutrition (particularly adequate potassium and 
+phosphorus) to reduce susceptibility of plants to the disease.
+- Remove crop debris (capable of harbouring oospores), and rotate with non-brassica crops for at least 3 years.
+- Grow resistant varieties.
 -----Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+- Alternate protectant products (e.g., copper, mancozeb) with systemic products (e.g.,
+metalaxyl, phosphorus acid), to prevent the development of resistant strains of the oomycete.
+For more information, visit http://www.plantwise.org/KnowledgeBank/Uploads/PestNet/Cabbage_white_rust_(134).htm
 ENDGROUP
 cabbage slugs-and-snails
 -----Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+- Keep the garden area clean
+- Put very dry materials, such as gravel, sand or cinders around the cabbage
+Read more at Gardening Know How: Protecting Cabbages From Slugs – How To Keep Slugs Off Cabbage http://www.gardeningknowhow.com/edible/vegetables/cabbage/protecting-cabbages-from-slugs-how-to-keep-slugs-off-cabbage.htm
 ENDGROUP
 cabbage cabbageworm
------Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+Read on how to control cabbageworm by visiting
+https://www.planetnatural.com/pest-problem-solver/garden-pests/cabbageworm-control/
 ENDGROUP
-maize gibrella-ear-rot
------Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+maize gibberella-ear-rot
+For advice, visit https://www.pioneer.com/home/site/ca/agronomy/crop-management/corn-insect-disease/gibberella-ear-rot/
 ENDGROUP
 maize leaf-blight
------Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+For advice, visit http://www.plantwise.org/KnowledgeBank/Datasheet.aspx?dsid=49783
 ENDGROUP
 maize termites
------Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+For advice, read http://www.oisat.org/downloads/Termite_control_HDRA.pdf
 ENDGROUP
 maize weevils
------Non-chemical control-----
-- Collect and destroy fallen leaves or bury under a layer of mulch
-- Prune out all stem lesions in before leaves appear
-
------Chemical control-----
-Use:
-- Bayer Fungus Fighter Concentrate
-- Bayer Fungus Fighter Plus
-- Scotts Fungus Clear Ultra 
-- Scotts Fungus Clear Ultra Gun
-For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
+For advice, visit http://bugspray.com/article/maizeweevil.html
