@@ -1,8 +1,15 @@
 rose rose-rust
-yellow-patch-leaves "Does the plant have yellow patches on its leaves? (yes/no?) " 0.4
-orange-spores-leaves "Does the plant have Orange pustules of spores underneath the leaves? (yes/no?) " 0.5
-leaves-fall "Do the affected leaves fall prior to healthy ones? (yes/no?) " 0.3
-plants-defoliated "Are the plants defoliated in serious infections? (yes/no?) " 0.6
+-----Non-chemical control-----
+- Prune out spring infections as soon as they are detected, to prevent the spread of spring spores
+- Collect and destroy fallen leaves in autumn to reduce the number of overwintering resting spores
+- If infections are persistently troublesome, it may be that the cultivar concerned is unusually susceptible, so consider replacing it with a different one
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?PID=269
 ENDGROUP
 rose black-spot
 black-spots-leaves "Does the plant have black spots on its leaves? (yes/no?) " 0.6

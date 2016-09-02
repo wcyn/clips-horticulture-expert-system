@@ -1,4 +1,24 @@
 rose
-rose-rust "Your plants seem to be suffering from Rose Rust"
-black-spot "Your plants seem to be suffering from Black Spot"
+rose-rust "Your Rose seems to be suffering from Rose Rust"
+black-spot "Your Rose seems to be suffering from Black Spot"
+metallic-flea-beetles "Your Rose seems to be Suffering from Metallic Flea Beetles"
+two-spotted-mites "Your Rose seems to be Suffering from Two-Spotted Mites" 
+ENDGROUP
+banana
+rhizome-rot "Your Banana seems to be Suffering from Rhizome Rot"
+banana-mosaic "Your Banana seems to be Suffering from Banana Mosaic"
+banana-aphids "Your Banana seems to be Suffering from Banana Aphids"
+banana-weevil "Your Banana seems to be Suffering from Banana Weevils"
+ENDGROUP
+cabbage
+downy-mildew "Your Cabbage seems to be Suffering from Downy Mildew"
+white-rust "Your Cabbage seems to be Suffering from White Rust"
+slugs-and-snails "Your Cabbage seems to be Suffering from Slugs and Snails"
+cabbageworms "Your Cabbage seems to be Suffering from Cabbageworms"
+ENDGROUP
+maize
+gibrella-ear-rot "Your Maize seems to be Suffering from Gibrella Ear Rot"
+leaf-blight "Your Maize seems to be Suffering from Leaf Blight"
+termites "Your Maize seems to be Suffering from Termites"
+weevils "Your Maize seems to be Suffering from Weevils"
 ENDGROUP

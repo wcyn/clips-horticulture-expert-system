@@ -1,3 +1,6 @@
+(defglobal ?*analysis* = NIL) ; Global Variable
+(defglobal ?*advice-file* = advice.txt) ; Global Variable
+
 ;;;; Symptom Details Template ;;;;
 
 (deftemplate symptom-details
@@ -12,7 +15,6 @@
     (slot plant-name )
     (slot weight (default 0)))
 
-(defglobal ?*analysis* = NIL)
 ; Deffunctions 
 
 (deffunction ask-question (?question $?allowed-values)
@@ -52,6 +54,7 @@
     else nil))))
     )
 
+(deffunction print-analysis (?statement))
 ; Get confidence level and Give Diagnosis based on Threshold
 (deffunction diagnose-plant (?plant-name ?disease-or-pest ?threshold)
     (bind ?weight 1)
@@ -135,8 +138,50 @@
                     (" ?symptom-rule-name ")))"
             )))
 
+(deffunction give-advice (?plant-name ?disease-or-pest $?filename)
+    ; (printout t "Filename: " ?filename)
+    (if (eq (length ?filename) 0)
+        then (bind ?filename advice.txt)
+    else 
+        (bind ?filename (implode$ (subseq$ ?filename 1 1))))
+    (open ?filename file-data) ; open the file and store data in file-data
+    (bind ?stop FALSE) ; initialize stop variable to FALSE
+    (bind ?plant-name-tmp (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
+    (bind ?disease-or-pest-tmp (read file-data)) ; 2nd line of the beginning of a new pest or disease is the disease or pest name
+    (printout t crlf crlf "----------------------ADVICE----------------------" crlf crlf)
+    (while (not ?stop) ; while stop variable is not TRUE
+        (bind ?temp-line (readline file-data))
+        (if (and (eq ?plant-name ?plant-name-tmp)
+            (eq ?disease-or-pest ?disease-or-pest-tmp))
+            then 
+                (if (eq ?temp-line EOF) ; if End of File
+                    then 
+                    (printout t crlf "Goodbye!" crlf)
+                    (bind ?stop TRUE) ; Set stop variable to TRUE
+                else (if (eq ?temp-line "ENDGROUP") ; If "ENDGROUP" check for the diagnosis of the disease or pest
+                    then
+                    (printout t crlf crlf 
+                        "                        ***" crlf
+                        "        Thank You for Using our Expert System!" crlf crlf)
+                    (bind ?stop TRUE)
+                else (if (eq ?temp-line "") ; If reads empty string, do nothing
+                        then (printout t "") ; Do nothing
+                else
+                    (printout t crlf ?temp-line crlf)
+                    )))
+        else (if (eq ?temp-line "ENDGROUP") ; if End of File
+                then 
+                (bind ?plant-name-tmp (read file-data)) ; 1st line of the beginning of a new pest or disease is the plant name
+                (bind ?disease-or-pest-tmp (read file-data)) ; 2nd line of the beginning of a new pest or disease is the disease or pest name
+            else if (eq ?temp-line "EOF"
+                then
+                (printout t "Sorry, we could not find any advice for this Diagnosis")
+                (bind ?stop TRUE)
+                )))
+        ) ; end while loop
+    (close)) ;close the file when done
+
 ; Dynamically generate diagnosis rules ;
-; (create-diagnosis-rules rose rose-rust 0.7 "Your Plants Seem to be suffering from Rose Rustnessness")
 (deffunction create-diagnosis-rules (?plant-name ?disease-or-pest ?diagnosis-st)
     (bind ?diagnosis-rule-name (str-cat "confirm-" ?disease-or-pest))
     (bind ?diagnosis-fact-name (str-cat "check-" ?disease-or-pest "-diagnosis"))
@@ -148,7 +193,8 @@
                 (retract ?f)
                 (if (diagnose-plant " ?plant-name " " ?disease-or-pest " " ?threshold ")
                     then
-                    (assert (diagnosis " ?diagnosis-st "))))"
+                    (assert (diagnosis " ?diagnosis-st " " ?plant-name " " ?disease-or-pest "))
+                    ))"
             )))
 
 (deffunction read-from-symptoms-file (?template ?file)
@@ -214,16 +260,6 @@
    =>
    (assert (check-most-probable)))
 
-;;;; DIAGNOSES ;;;;
-; (defrule confirm-rose-rust
-;    ?f <- (check-rose-rust-diagnosis)
-;    =>
-;    (retract ?f)
-;    (if (diagnose-plant rose rose-rust 0.7)
-;       then
-;       (assert (diagnosis "Your Roses seem to be Suffering from Rose Rust"))))
-
-
 (defrule find-most-probable-disease
     (not (diagnosis ?))
     ?f <- (check-most-probable)
@@ -239,6 +275,7 @@
 
 
 ;;;; Add Advice here, maybe? ;;;;
+
 
 ; Startup n Conclusion Rules
 
@@ -261,9 +298,11 @@
 
 (defrule print-diagnosis ""
     (declare (salience 10))
-    (diagnosis ?item)
+    (diagnosis ?statement ?plant-name ?disease-or-pest)
     =>
     (printout t crlf crlf)
     (printout t "---------------------DIAGNOSIS--------------------")
     (printout t crlf crlf)
-    (format t " %s%n%n" ?item))
+    (format t " %s%n%n" ?statement)
+    (give-advice ?plant-name ?disease-or-pest)
+    (assert (diagnosis TRUE)))
