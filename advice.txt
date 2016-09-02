@@ -12,81 +12,218 @@ Use:
 For more information, visit https://www.rhs.org.uk/advice/profile?PID=269
 ENDGROUP
 rose black-spot
-black-spots-leaves "Does the plant have black spots on its leaves? (yes/no?) " 0.6
-distance-between-spots "Are the spots as far as 12mm apart? (yes/no?) " 0.5
-circular-spots-irregular-edge-yellow-halo "Does the plant have circular spots with an irregular edge with a yellow halo? (yes/no?) " 0.5
-yellow-leaves-fall-early "Do the plants' leaves turn yellow and fall early? (yes/no?) " 0.4
-continual-defoliation-cause-death "Does the plant have continual defoliation that causes weakness, dieback or death of the plant? (yes/no?) " 0.4
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 rose metallic-flea-beetles
-chewed-irregular-shaped-holes "Are there chewed holes of irregular shapes in young leaves and buds?" 0.6
-leaves-holes-enlarge "Do the holes enlarge as the leaves enlarge? (yes/no) " 0.6
+-----Non-chemical control-----
+- Light infestations of the flea beetle can be tolerated as 
+small amounts of leaf loss will not affect the vigour or overall
+appearance of the plant.
+- Hand removal of the adults and larvae can help reduce infestation levels.
+-----Chemical control-----
+Use:
+- lambda-cyhalothrin (e.g. Westland Resolva Bug Killer)
+- deltamethrin (e.g. Bayer Sprayday Greenfly Killer)
+- Organic insecticides containing natural pyrethrins 
+(e.g. Bug Clear Gun for Fruit and Defenders Bug Killer)
+*Note: Plants in flower should not be sprayed due to the danger to pollinating insects.
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=945
 ENDGROUP
 rose two-spotted-mites
-silvering-of-leaves "Do the plants' leaves silver? (yes/no)?" 0.6
-fine-webbing-eggs-underside "Do the plants have fine webbing and eggs on the undersides of the leaves? (yes/no)? " 0.5
+-----Non-chemical control-----
+- Try a high pressure hosing in the early morning - three days in a row.
+- Hosing plants mid-season to remove dust on the leaves helps too.
+- Use a handheld vacuum cleaner  to vacuum the leaves. 
+After vacuuming, tip the contents immediately into a
+plastic bag and place in the freezer for a few hours.
+- Pruning affected plants and removing infested leaves will reduce pest numbers.
+- Try to control weeds that harbour the pest such as plantains, black nightshade and marshmallow.
+- Keep your plants healthy by feeding, mulching and watering.
+-----Chemical control-----
+Use:
+- Potassium soap sprays such as Natrasoap
+- A horticultural oil such as Eco-Oil
+- 2% rosemary oil solution can kill the mites, without harming the beneficial predatory mite.
+- Wettable sulphur or dusting sulphur can only be used in cool weather,
+or it will cause leaf burn. 
+* You should avoid using an oil product for at least a month after
+applying sulphur because in combination it can cause phytotoxic
+problems for plants.
+For more information, visit https://www.greenharvest.com.au/PestControlOrganic/Information/SpiderMiteControl.html
 ENDGROUP
 banana rhizome-rot
-yellow-brown-watery-internal-tissue "Is the internal tissue yellow/brown and watery? (yes/no)? " 0.5
-pseudostem-breaks-from-rhizome "Does the pseudostem break from the rhizome? (yes/no)? " 0.5
-rhizome-fails-to-germinate "Does the rhizome fail to germinate (does not form new leaves)? (yes/no)? " 0.6
+-----Non-chemical control-----
+- Provide better drainage
+- Avoid furrow irrigation and follow basin irrigation
+- Use disease free planting material
+- Remove Heliconia spp. and weeds from the field and nearby area
+- Adopt crop rotation involving non-host crops for 12 months
+- Leave soil fallow for 6 months, especially in summer
+-----Chemical control-----
+- Drench soil with antibiotics like Streptomycin / Streptocycline 500ppm (500mg/L) 
+- Before planting, treat suckers with 0.4% copper oxychloride (4g/L) 30 minutes
+- Disinfect the irrigation water with 0.1% bleaching powder (1g/L) solution
+- Drench soil with 1% Bordeaux mixture or 0.4% copper oxychloride (4g/L)
+For more information, visit http://www.kissankerala.net:8080/KISSAN-CHDSS/English/Banana/Disease/6.htm
 ENDGROUP
 banana banana-mosaic
-chlorotic-mottling-stripes-on-foliage "Is there chlorotic mottling or stripes on foliage? (yes/no)? " 0.6
-distorted-fruit-with-chlorotic-streaks-mottling "Does the plant have distorted fruit which may have chlorotic streaks or mottling? (yes/no)? " 0.6
-distorted-leaves "Does the plant have distorted leaves? (yes/no)? " 0.4
-leaf-necrosis "Do the leaves have black, brown or tan spots, holes or discolourations? (yes/no)? " 0.5
+Note: Banana Mosaic is a virus, and viral diseases cannot be cured
+-----Non-chemical control-----
+- Eradicate and destroy all infected plants including suckers along with roots
+- Do not take suckers from affected fields
+- Use disease free suckers for planting. Use tissue culture plants and certified, disease free suckers
+- Observe strict quarantine regulations in disease free areas
+- Avoid growing leguminous and cucurbitaceous vegetables as intercrop
+- Before planting, spread lemon grass in the pits
+-----Chemical control-----
+- Apply 25 g Phorate 10G or 20g Carbofuran 3G, 20 days after planting around the rhizomes in soil
+- Apply 12.5 g Phorate 10G or 10g Carbofuran 3G per plant in the leaf axils or
+25 g Phorate 10G or 20g Carbofuran 3G per plant in the soil at 2 ½ months and 5 ½ months after planting.
+For more information, visit http://www.kissankerala.net:8080/KISSAN-CHDSS/English/Banana/Disease/8.htm
 ENDGROUP
 banana banana-aphid
-deformed-plants-curled-shrivelled-leaves "Are the plants deformed with curled, shrivelled leaves? (yes/no)? " 0.4
-galls-form-on-leaves "Do galls form on the leaves of the plant? (yes/no)? " 0.5
-colonies-of-aphids-present "Are colonies of aphids present in the crown of the plant at the base of pseudostem or between the outer leaf sheaths? (yes/no)? " 0.7
+-----Non-chemical control-----
+- Inspect alternate hosts for aphids and eliminate them.
+- Control ants if possible and lawful; ants aggressively protect aphids from natural enemies.
+Boric acid baits can work on organic farms.
+- Destroy wild bananas in the area.
+- Control weeds around bananas.
+- Diversify the banana farm by growing a range of different plants or crops
+- Keep banana mats pruned of all unwanted suckers.
+-----Chemical control-----
+Use:
+- Diazinon
+- Imidacloprid
+- Horticultural soaps and oils and dish washing detergents and water
+For more information, visit http://www.ctahr.hawaii.edu/bbtd/aphid_control.asp
 ENDGROUP
 banana banana-weevil
-visible-tunnels-in-corm "Do the plants have visible tunnels in corm as rounded holes up to 8 mm in diameter? (yes/no)? " 0.5
-plants-wilting-toppling "Do the plants wilt and topple over? (yes/no)? " 0.4
-destruction-root-system "Do the plants face destruction of the root system? (yes/no)? " 0.4
-reduced-plant-growth "Do the plants have reduced growth? (yes/no)? " 0.4
-reduced-fruit-production "Do the plants have reduced fruit production? (yes/no)? " 0.4
-black-beetle-between-leaf-sheaths "Are there black hard-shelled beetles between leaf sheaths? (yes/no)? " 0.6
+-----Non-chemical control-----
+- Use clean planting material (tissue culture) for planting. 
+Weevils spread from field to field through infested plants.
+- At harvest cut pseudo stems as high as possible. 
+Pseudo stems serve as food and refuge to weevils.
+- Accelerate the destruction of harvest residues or fallen plants
+by cutting them into small pieces and prevent them from
+becoming a support for weevils.
+- Use pheromone traps to capture weevils.
+
+-----Chemical control-----
+Use:
+- Nemathorin ® 10G (fosthiazate) at a dose of 20 g of commercial
+product per plant.
+For more information, read http://www.it2.fr/wp-content/uploads/2014/11/DOC_IT2_2014-Fiche-manuel-BGM-n3-Charancons_ANG_BD1.pdf
 ENDGROUP
 cabbage downy-mildew
-irregular-yellow-patches-leaves "Does the plant have irregular yellow patches on its leaves? (yes/no)? " 0.5
-fluffy-gray-growth-leaves "Does the plant have fluffy gray growth on underside of leaves? (yes/no)? " 0.6
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 cabbage white-rust
-white-pustules "Does the plant have white pustules on leaves, stems or flowers? (yes/no)? " 0.6
-leaves-roll-thicken "Have the plant leaves rolled and thickened? (yes/no)? " 0.4
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 cabbage slugs-and-snails
-irregularly-shaped-holes-leaves-stems "Do the plants have irregularly shaped holes in leaves and stems? (yes/no)? " 0.4
-slime-trails "Are there slime trails present on the plant and surrounding soil? (yes/no)? " 0.6
-shredded-leaves "Do the plants possess shredded leaves? (yes/no)? " 0.4
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 cabbage cabbageworm
-ragged-holes "Do the plants have ragged holes in leaves bored into head? (yes/no)? " 0.4
-frass "Do the plants have green-brown faeces(frass) on leaves? (yes/no)? " 0.4
-caterpillar-green-hairy "Presence of a caterpillar that is green and hairy? (yes/no)? " 0.6
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 maize gibrella-ear-rot
-red-pink-mold "Is there red or pink coloured mold on ear tip? (yes/no)? " 0.4
-husk-adhering-to-ear "Does the husk adhere tightly to the ear? (yes/no)? " 0.6
-white-mycelium "Presence of white mold gradually moving towards base of the ear? (yes/no)? " 0.5
-extensive-kernel-rotting "Can you observe extensive kernel rotting? (yes/no)? " 0.3
-bluish-black-perithecia-on-husks "Do the husks have bluish-black perithecia? (yes/no)? " 0.5
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 maize leaf-blight
-gray-green-lesions-leaves "Do the leaves have elliptical necrotic gray-green lesions? (yes/no)? " 0.4
-spore-formation-leaves "Is there spore formation on leaves? (yes/no)? " 0.4
-dead-tissue "Are there large areas of dead tissue? (yes/no)? " 0.5
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 maize termites
-defoliation-seedlings "Is there partial or total defoliation of seedlings (yes/no)? " 0.5
-withering "Presence of withering? (yes/no)? " 0.3
-plant-lodging "Is the alignment of the root or stem vertically displaced? (yes/no)? " 0.4
-plant-death "Are the plants dying? (yes/no)? " 0.3
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
 ENDGROUP
 maize weevils
-determine-holes-on-grains "Are there circular or ragged holes on the surface of the grains? (yes/no)? " 0.6
-grains-float "Do the grains float if placed on water? (yes/no)? " 0.4
-grain-dust "Is there a presence of flour-like grain dust mixed with frass? (yes/no)? " 0.6
+-----Non-chemical control-----
+- Collect and destroy fallen leaves or bury under a layer of mulch
+- Prune out all stem lesions in before leaves appear
+
+-----Chemical control-----
+Use:
+- Bayer Fungus Fighter Concentrate
+- Bayer Fungus Fighter Plus
+- Scotts Fungus Clear Ultra 
+- Scotts Fungus Clear Ultra Gun
+For more information, visit https://www.rhs.org.uk/advice/profile?pid=270
