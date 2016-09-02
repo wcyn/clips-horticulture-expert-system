@@ -54,7 +54,6 @@
     else nil))))
     )
 
-(deffunction print-analysis (?statement))
 ; Get confidence level and Give Diagnosis based on Threshold
 (deffunction diagnose-plant (?plant-name ?disease-or-pest ?threshold)
     (bind ?weight 1)

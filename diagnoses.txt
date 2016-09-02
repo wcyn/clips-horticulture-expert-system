@@ -17,7 +17,7 @@ slugs-and-snails "Your Cabbage seems to be Suffering from Slugs and Snails"
 cabbageworms "Your Cabbage seems to be Suffering from Cabbageworms"
 ENDGROUP
 maize
-gibberella-ear-rot "Your Maize seems to be Suffering from Gibrella Ear Rot"
+gibberella-ear-rot "Your Maize seems to be Suffering from Gibberella Ear Rot"
 leaf-blight "Your Maize seems to be Suffering from Leaf Blight"
 termites "Your Maize seems to be Suffering from Termites"
 weevils "Your Maize seems to be Suffering from Weevils"

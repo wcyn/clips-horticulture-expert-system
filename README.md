@@ -35,7 +35,11 @@ CLIPS> (run)
 &emsp;[`deffunction read-from-symptoms-file`](#deffunction-read-from-symptoms-file)  
 &emsp;[`deffunction create-query-rules`](#deffunction-create-query-rules)  
 &emsp;&emsp;[`defrule determine-yellow-patch-leaves`](#defrule-determine-yellow-patch-leaves)  
-[Diagnosis Rules](#diagnosis-rules)
+[Diagnosis Rules](#diagnosis-rules)  
+&emsp;[`deffunction create-check-diagnosis-rule`](#deffunction-create-check-diagnosis-rule)  
+&emsp;[`deffunction create-diagnosis-rules`](#deffunction-create-diagnosis-rules)  
+[Giving Advice](#giving-advice)  
+&emsp;[`deffunction give-advice`](#deffunction-give-advice)
 
 
 ## How the weights work
@@ -100,6 +104,12 @@ __Arguments__:
 __Steps__:  
 -- Get yes or no response from user and store that in `response`  
 -- Return `yes` if response is `yes` and `no` if response is `no`
+### `deffunction analysis-mode`
+__Description__: Sets analysis mode to true or false. Analysis mode allows the user to see the calculations that lead to the diagnosis  
+__Arguments__:  
+-- `question` - Response by the user, `yes` or `no`  
+__Steps__:   
+-- Get response from user and change `analysis` gloabal variable to `TRUE` or `FALSE` accordingly.  
 
 ### `deffunction which-plant`
 __Description__: Finds what plant is affected  
@@ -223,4 +233,61 @@ If these conditions are reached, assert the [`symptom-details`](#deftemplate-sym
 ```
 
 ## Diagnosis Rules
-_to be continued.._
+### `deffunction create-check-diagnosis-rule`
+__Description__: Generate a rule that prompts the diagnosis to be checked after certain questions have been answered   
+__Arguments__:  
+-- `plant-name` - The name of the plant  
+-- `disease-or-pest` - What disease or pest the symptoms belongs to  
+
+If this function is run like so:
+```
+CLIPS> (create-check-diagnosis-rule rose rose-rust)
+```
+
+It will generate a rule called `check-rose-rust-diagnosis` that looks like this:
+```
+(defrule check-rose-rust-diagnosis
+   (not (diagnosis ?))
+   (plant-name rose)
+   =>
+   (assert (check-rose-rust-diagnosis)))
+```
+
+### `deffunction create-diagnosis-rules`
+__Description__: Generate a rule to confirm whether a plant has a certain disease / pest or not.   
+__Arguments__:  
+-- `template` - The [template](#template-details) to use for the details of the symptoms  
+-- `plant-name` - The name of the plant  
+-- `disease-or-pest` - What disease or pest the symptoms belongs to  
+-- `diagnosis-st` - What to print out to the user if the Diagnosis is positive  
+
+If this function is run like so:
+```
+CLIPS> (create-diagnosis-rules rose rose-rust "\"Your Rose seems to be suffering from Rose Rust\"")
+```
+
+It will generate a rule called `confirm-rose-rust` that looks like this:
+```
+(defrule confirm-rose-rust
+   ?f <- (check-rose-rust-diagnosis)
+   =>
+   (retract ?f)
+   (if (diagnose-plant rose rose-rust 0.7)
+      then
+      (assert (diagnosis "Your Rose seems to be suffering from Rose Rust" rose rose-rust))))
+```
+## Giving Advice
+After a diagnosis has been given, the system offers some advice to the user depending on the disease or pest that the plant has been diagnosed with. For example, it may suggest a link to a website with helpful information.
+
+The function that takes care of this is called `give-advice`
+### `deffunction give-advice` 
+__Description__: Get advice from a text file depending on the pest or disease and display it to the user   
+__Arguments__:  
+-- `plant-name` - The name of the plant  
+-- `disease-or-pest` - What disease or pest the symptoms belongs to  
+-- `filename` - The filename where the advice data is stored  
+__Steps__:  
+-- Get the plant name and disease or pest name from the file
+-- Check if that matches with the given plant name and disease or pest name  
+-- If they match, print out the advice that follows until you reach the text `ENDGROUP`  
+-- If not, keep reading through the file
